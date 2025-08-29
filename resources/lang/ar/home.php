@@ -1,0 +1,28 @@
+<?php
+
+return [
+    'hero_title' => 'مرحباً بكم في مؤسسة الراشد',
+    'hero_subtitle' => 'متخصصون في منتجات المرور والسلامة — نوفر حلول متكاملة لضمان أمان الطرق والجراجات بأعلى جودة ومعايير.',
+    'hero_cta' => 'استعرض خدماتنا',
+    'products_title' => 'منتجاتنا',
+    'products_subtitle' => 'نوفر مجموعة متكاملة من مستلزمات المرور والسلامة',
+    'clients_title' => 'عملاؤنا',
+    'clients_subtitle' => 'نحظى بثقة الشركات والمؤسسات الرائدة',
+    'projects_title' => 'مشاريعنا',
+    'projects_subtitle' => 'أحدث المشاريع التي نفذناها بنجاح',
+    'contact_title' => 'تواصل معنا',
+    'contact_subtitle' => 'يسعدنا استقبال استفساراتكم وطلباتكم',
+    'address_label' => 'العنوان',
+    'address_text' => '10 شارع الجاهز، من الطيران، الحي السابع، مدينة نصر، القاهرة',
+    'email_label' => 'الإيميل',
+    'whatsapp_label' => 'واتساب',
+    'phone_number' => '4742 086 100 02+',
+    'contact_form_title' => 'أرسل لنا رسالة',
+    'name_label' => 'الاسم',
+    'email_placeholder' => 'البريد الإلكتروني',
+    'message_label' => 'الرسالة',
+    'send_button' => 'إرسال',
+    'location_title' => 'موقعنا',
+    'fax_label' => 'فاكس / أرضي',
+    'fax_number' => '23879050 02',
+];

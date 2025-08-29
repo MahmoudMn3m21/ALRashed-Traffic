@@ -1,0 +1,28 @@
+<?php
+
+return [
+    'hero_title' => 'Welcome to Alrashed Traffic',
+    'hero_subtitle' => 'Specialists in traffic and safety products — We provide comprehensive solutions to ensure road and garage safety with the highest quality and standards.',
+    'hero_cta' => 'Explore Our Services',
+    'products_title' => 'Our Products',
+    'products_subtitle' => 'We provide a comprehensive range of traffic and safety supplies',
+    'clients_title' => 'Our Clients',
+    'clients_subtitle' => 'Trusted by leading companies and organizations',
+    'projects_title' => 'Our Projects',
+    'projects_subtitle' => 'Latest projects we have successfully implemented',
+    'contact_title' => 'Contact Us',
+    'contact_subtitle' => 'We are happy to receive your inquiries and requests',
+    'address_label' => 'Address',
+    'address_text' => '10 Al-Jahiz Street, from Aviation, Seventh District, Nasr City, Cairo',
+    'email_label' => 'Email',
+    'whatsapp_label' => 'WhatsApp',
+    'phone_number' => '+20 100 086 4742',
+    'contact_form_title' => 'Send us a message',
+    'name_label' => 'Name',
+    'email_placeholder' => 'Email',
+    'message_label' => 'Message',
+    'send_button' => 'Send',
+    'location_title' => 'Our Location',
+    'fax_label' => 'Fix / Landline',
+    'fax_number' => '02 23879050',
+];
