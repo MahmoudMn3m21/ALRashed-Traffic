@@ -6,5 +6,6 @@ return [
     'products' => 'المنتجات',
     'projects' => 'المشاريع',
     'clients' => 'العملاء',
-    'contact' => 'تواصل معنا',
+    'contact' => 'اتصل بنا',
+    'language_switcher' => 'تبديل اللغة',
 ];

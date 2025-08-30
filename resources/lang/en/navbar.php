@@ -7,4 +7,5 @@ return [
     'projects' => 'Projects',
     'clients' => 'Clients',
     'contact' => 'Contact',
+    'language_switcher' => 'Language Switcher',
 ];

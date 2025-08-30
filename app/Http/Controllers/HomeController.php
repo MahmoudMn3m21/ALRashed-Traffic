@@ -14,9 +14,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $products = Product::all();
-        $projects = Project::all();
-        $clients = Client::all();
+        $products = Product::take(6)->get();
+        $projects = Project::take(6)->get();
+        $clients = Client::take(8)->get();
 
         return view('welcome', compact('products', 'projects', 'clients'));
     }

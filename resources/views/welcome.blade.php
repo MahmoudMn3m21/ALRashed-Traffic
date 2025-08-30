@@ -3,215 +3,302 @@
 @section('title', __('navbar.home'))
 
 @section('content')
-<!-- Hero Section -->
-<section class="bg-primary text-white py-5">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-lg-6">
-                <h1 class="display-4 fw-bold mb-4">{{ __('home.hero_title') }}</h1>
-                <p class="lead mb-4">{{ __('home.hero_subtitle') }}</p>
-                <a href="#products" class="btn btn-light btn-lg">{{ __('home.hero_cta') }}</a>
-            </div>
-            <div class="col-lg-6 text-center">
-                <img src="{{ asset('images/logo.png') }}" alt="Alrashed Traffic" class="img-fluid rounded shadow"
-                    style="max-height: 320px;">
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Products Section -->
-<section id="products" class="py-5">
-    <div class="container">
-        <div class="row">
-            <div class="col-12 text-center mb-5">
-                <h2 class="display-5 fw-bold">{{ __('home.products_title') }}</h2>
-                <p class="lead text-muted">{{ __('home.products_subtitle') }}</p>
+    <!-- Hero Section -->
+    <section class="hero-section position-relative overflow-hidden">
+        <!-- Animated Background -->
+        <div class="hero-bg">
+            <div class="gradient-overlay"></div>
+            <div class="particles">
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
+                <div class="particle"></div>
             </div>
         </div>
-        <div class="row g-4">
-            @foreach($products as $product)
-            <div class="col-md-6 col-lg-3">
-                <div class="card h-100 shadow-sm">
-                    @if($product->image)
-                    <img src="{{ asset('storage/' . $product->image) }}" class="card-img-top"
-                        alt="{{ $product->getName() }}" style="height: 200px; object-fit: cover;">
-                    @endif
-                    <div class="card-body text-center">
-                        <h5 class="card-title">{{ $product->getName() }}</h5>
-                        <p class="card-text text-muted small">{{ $product->getAlternateName() }}</p>
+        
+        <div class="container position-relative">
+            <div class="row align-items-center min-vh-100">
+                <div class="col-lg-6 fade-in">
+                    <h1 class="hero-title mb-4">{{ __('home.hero_title') }}</h1>
+                    <p class="hero-subtitle mb-4">{{ __('home.hero_subtitle') }}</p>
+                    <div class="hero-buttons">
+                        <a href="#products" class="btn btn-primary btn-lg me-3 smooth-scroll">{{ __('home.view_products') }}</a>
+                        <a href="{{ url('/contact') }}" class="btn btn-outline-light btn-lg">{{ __('navbar.contact') }}</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 text-center slide-in-right">
+                    <div class="hero-image-wrapper">
+                        <img src="{{ asset('images/logo.png') }}" alt="Alrashed Traffic"
+                            class="img-fluid hero-image">
                     </div>
                 </div>
             </div>
+            
+            <!-- Scroll Indicator -->
+            <div class="scroll-indicator">
+                <a href="#products" class="smooth-scroll">
+                    <i class="fas fa-chevron-down"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+<!-- Products Section -->
+<section class="section-padding" id="products">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center mb-5">
+                <div class="section-header fade-in">
+                    <h2 class="section-title">{{ __('home.our_products') }}</h2>
+                    <p class="section-subtitle">{{ __('home.products_description') }}</p>
+                    <div class="title-divider"></div>
+                </div>
+            </div>
+        </div>
+        <div class="row g-4">
+            @foreach ($products as $index => $product)
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="product-card h-100 fade-in" style="animation-delay: {{ $index * 0.1 }}s;">
+                        <div class="product-image-wrapper">
+                            <img src="{{ $product->image ? asset('storage/' . $product->image) : asset('images/placeholder.jpg') }}"
+                                class="product-image" alt="{{ $product->getName() }}">
+                            <div class="product-overlay">
+                                <a href="{{ route('products.show', $product) }}" class="btn btn-light btn-sm">
+                                    <i class="fas fa-eye me-2"></i>{{ __('home.view_details') }}
+                                </a>
+                            </div>
+                        </div>
+                        <div class="product-content">
+                            <h5 class="product-title">{{ $product->getName() }}</h5>
+                            <p class="product-subtitle">{{ $product->getAlternateName() }}</p>
+                            <p class="product-description">{{ Str::limit($product->description, 100) }}</p>
+                            <div class="product-features">
+                                @if($product->features)
+                                    @foreach(array_slice(explode(',', $product->features), 0, 2) as $feature)
+                                        <span class="feature-tag">{{ trim($feature) }}</span>
+                                    @endforeach
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                </div>
             @endforeach
+        </div>
+        <div class="row">
+            <div class="col-12 text-center mt-5">
+                <a href="{{ url('/products') }}" class="btn btn-primary btn-lg">
+                    {{ __('home.view_all_products') }}
+                    <i class="fas fa-arrow-right ms-2"></i>
+                </a>
+            </div>
         </div>
     </div>
 </section>
 
 <!-- Clients Section -->
-<section id="clients" class="py-5">
+<section class="section-padding bg-light">
     <div class="container">
         <div class="row">
             <div class="col-12 text-center mb-5">
-                <h2 class="display-5 fw-bold">{{ __('home.clients_title') }}</h2>
-                <p class="lead text-muted">{{ __('home.clients_subtitle') }}</p>
-            </div>
-        </div>
-
-        <div class="row g-4">
-            @foreach($clients as $client)
-            <div class="col-md-6 col-lg-3">
-                <div class="card h-100 shadow-sm text-center">
-                    @if($client->logo)
-                    <div class="p-3 d-flex align-items-center justify-content-center" style="height: 150px;">
-                        <img src="{{ asset('storage/' . $client->logo) }}" alt="{{ $client->name }}" class="img-fluid"
-                            style="max-height: 120px; object-fit: contain;">
-                    </div>
-                    @else
-                    <div class="bg-light d-flex align-items-center justify-content-center" style="height: 150px;">
-                        <i class="fas fa-building fa-3x text-muted"></i>
-                    </div>
-                    @endif
-                    <div class="card-body">
-                        <h6 class="card-title">{{ $client->name }}</h6>
-                        @if($client->website)
-                        <a href="{{ $client->website }}" target="_blank" class="btn btn-outline-primary btn-sm mt-2">
-                            <i class="fas fa-external-link-alt me-1"></i> Visit
-                        </a>
-                        @endif
-                    </div>
+                <div class="section-header fade-in">
+                    <h2 class="section-title">{{ __('home.our_clients') }}</h2>
+                    <p class="section-subtitle">{{ __('home.clients_description') }}</p>
+                    <div class="title-divider"></div>
                 </div>
             </div>
+        </div>
+        <div class="row g-4">
+            @foreach ($clients as $index => $client)
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                    <div class="client-card fade-in" style="animation-delay: {{ $index * 0.05 }}s;">
+                        <div class="client-logo-wrapper">
+                            <img src="{{ $client->logo ? asset('storage/' . $client->logo) : asset('images/placeholder.jpg') }}"
+                                class="client-logo" alt="{{ $client->name }}">
+                        </div>
+                        <div class="client-info">
+                            <h6 class="client-name">{{ $client->name }}</h6>
+                        </div>
+                    </div>
+                </div>
             @endforeach
+        </div>
+        <div class="row">
+            <div class="col-12 text-center mt-5">
+                <a href="{{ url('/clients') }}" class="btn btn-primary btn-lg">
+                    {{ __('home.view_all_clients') }}
+                    <i class="fas fa-arrow-right ms-2"></i>
+                </a>
+            </div>
         </div>
     </div>
 </section>
 
 <!-- Projects Section -->
-<section id="projects" class="py-5 bg-light">
+<section class="section-padding">
     <div class="container">
         <div class="row">
             <div class="col-12 text-center mb-5">
-                <h2 class="display-5 fw-bold">{{ __('home.projects_title') }}</h2>
-                <p class="lead text-muted">{{ __('home.projects_subtitle') }}</p>
+                <div class="section-header fade-in">
+                    <h2 class="section-title">{{ __('home.our_projects') }}</h2>
+                    <p class="section-subtitle">{{ __('home.projects_description') }}</p>
+                    <div class="title-divider"></div>
+                </div>
             </div>
         </div>
         <div class="row g-4">
-            @foreach($projects as $project)
-            <div class="col-md-6 col-lg-4">
-                <div class="card h-100 shadow-sm">
-                    @if($project->image)
-                    <img src="{{ asset('storage/' . $project->image) }}" class="card-img-top"
-                        alt="{{ $project->getTitle() }}" style="height: 250px; object-fit: cover;">
-                    @endif
-                    <div class="card-body">
-                        <h5 class="card-title">{{ $project->getTitle() }}</h5>
-                        <p class="card-text">{{ Str::limit($project->getDescription(), 100) }}</p>
-                        <p class="card-text text-muted small">{{ $project->getAlternateTitle() }}</p>
+            @foreach ($projects as $index => $project)
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="project-card fade-in" style="animation-delay: {{ $index * 0.1 }}s;">
+                        <div class="project-image-wrapper">
+                            <img src="{{ $project->image ? asset('storage/' . $project->image) : asset('images/placeholder.jpg') }}"
+                                class="project-image" alt="{{ $project->getTitle() }}">
+                            <div class="project-overlay">
+                                <div class="project-overlay-content">
+                                    <h5 class="project-overlay-title">{{ $project->getTitle() }}</h5>
+                                    <p class="project-overlay-subtitle">{{ $project->getAlternateTitle() }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h5 class="project-title">{{ $project->getTitle() }}</h5>
+                            <p class="project-subtitle">{{ $project->getAlternateTitle() }}</p>
+                            <p class="project-description">{{ Str::limit($project->getDescription(), 80) }}</p>
+                            <div class="project-meta">
+                                <span class="project-category">
+                                    <i class="fas fa-tag me-1"></i>Traffic Solutions
+                                </span>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
             @endforeach
+        </div>
+        <div class="row">
+            <div class="col-12 text-center mt-5">
+                <a href="{{ url('/projects') }}" class="btn btn-primary btn-lg">
+                    {{ __('home.view_all_projects') }}
+                    <i class="fas fa-arrow-right ms-2"></i>
+                </a>
+            </div>
         </div>
     </div>
 </section>
 
 <!-- Contact Section -->
-<section class="bg-light py-5">
+<section class="section-padding bg-light" id="contact">
     <div class="container">
         <div class="row">
             <div class="col-12 text-center mb-5">
-                <h2 class="display-5 fw-bold">{{ __('home.contact_title') }}</h2>
-                <p class="lead text-muted">{{ __('home.contact_subtitle') }}</p>
-            </div>
-        </div>
-
-        <!-- Contact Info -->
-        <div class="row justify-content-center">
-            <div class="col-lg-12">
-                <div class="row g-4">
-                    <div class="col-md-3 text-center">
-                        <div class="bg-primary text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3"
-                            style="width: 60px; height: 60px;">
-                            <i class="fas fa-map-marker-alt fa-lg"></i>
-                        </div>
-                        <h6 class="fw-bold">{{ __('home.address_label') }}</h6>
-                        <p class="text-muted">{{ __('home.address_text') }}</p>
-                    </div>
-                    <div class="col-md-3 text-center">
-                        <div class="bg-success text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3"
-                            style="width: 60px; height: 60px;">
-                            <i class="fas fa-envelope fa-lg"></i>
-                        </div>
-                        <h6 class="fw-bold">{{ __('home.email_label') }}</h6>
-                        <p class="text-muted">
-                            <a href="mailto:info@alrashed-traffic.com" class="text-decoration-none">
-                                info@alrashed-traffic.com
-                            </a>
-                        </p>
-                    </div>
-                    <div class="col-md-3 text-center">
-                        <div class="bg-warning text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3"
-                            style="width: 60px; height: 60px;">
-                            <i class="fab fa-whatsapp fa-lg"></i>
-                        </div>
-                        <h6 class="fw-bold">{{ __('home.whatsapp_label') }}</h6>
-                        <p class="text-muted">
-                            <a href="https://wa.me/201000864742" class="text-decoration-none" target="_blank">
-                                {{ __('home.phone_number') }}
-                            </a>
-                        </p>
-                    </div>
-                    <div class="col-md-3 text-center">
-                        <div class="bg-warning text-white rounded-circle d-inline-flex align-items-center justify-content-center mb-3"
-                            style="width: 60px; height: 60px;">
-                            <i class="fas fa-fax fa-lg"></i>
-                        </div>
-                        <h6 class="fw-bold">{{ __('home.fax_label') }}</h6>
-                        <p class="text-muted">
-                            <a href="tel:0223879050" class="text-decoration-none">
-                                {{ __('home.fax_number') }}
-                            </a>
-                        </p>
-                    </div>
+                <div class="section-header fade-in">
+                    <h2 class="section-title">{{ __('home.contact_title') }}</h2>
+                    <p class="section-subtitle">{{ __('home.contact_subtitle') }}</p>
+                    <div class="title-divider"></div>
                 </div>
             </div>
         </div>
-
-        <!-- Contact Form + Google Map -->
-        <div class="row mt-5">
-            <!-- Contact Form -->
-            <div class="col-md-6 mb-4">
-                <h3 class="fw-bold mb-3">{{ __('home.contact_form_title') }}</h3>
-                <form method="POST" action="{{ route('contact.send') }}">
-                    @csrf
-                    <div class="mb-3">
-                        <label for="name" class="form-label">{{ __('home.name_label') }}</label>
-                        <input type="text" id="name" name="name" class="form-control" required>
+        
+        <!-- Contact Info Cards -->
+        <div class="row g-4 mb-5">
+            <div class="col-lg-3 col-md-6">
+                <div class="contact-info-card fade-in" style="animation-delay: 0.1s;">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
                     </div>
-
-                    <div class="mb-3">
-                        <label for="email" class="form-label">{{ __('home.email_placeholder') }}</label>
-                        <input type="email" id="email" name="email" class="form-control" required>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="message" class="form-label">{{ __('home.message_label') }}</label>
-                        <textarea id="message" name="message" rows="5" class="form-control" required></textarea>
-                    </div>
-
-                    <button type="submit" class="btn btn-primary px-4">{{ __('home.send_button') }}</button>
-                </form>
+                    <h6 class="contact-title">{{ __('home.address_label') }}</h6>
+                    <p class="contact-text">{{ __('home.address_text') }}</p>
+                </div>
             </div>
-
+            <div class="col-lg-3 col-md-6">
+                <div class="contact-info-card fade-in" style="animation-delay: 0.2s;">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h6 class="contact-title">{{ __('home.email_label') }}</h6>
+                    <p class="contact-text">
+                        <a href="mailto:info@alrashed-traffic.com">info@alrashed-traffic.com</a>
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="contact-info-card fade-in" style="animation-delay: 0.3s;">
+                    <div class="contact-icon whatsapp">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                    <h6 class="contact-title">{{ __('home.whatsapp_label') }}</h6>
+                    <p class="contact-text">
+                        <a href="https://wa.me/201000864742" target="_blank">{{ __('home.phone_number') }}</a>
+                    </p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="contact-info-card fade-in" style="animation-delay: 0.4s;">
+                    <div class="contact-icon">
+                        <i class="fas fa-fax"></i>
+                    </div>
+                    <h6 class="contact-title">{{ __('home.fax_label') }}</h6>
+                    <p class="contact-text">
+                        <a href="tel:0223879050">{{ __('home.fax_number') }}</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row g-5">
+            <!-- Contact Form -->
+            <div class="col-lg-6">
+                <div class="contact-form-wrapper fade-in" style="animation-delay: 0.5s;">
+                    <h4 class="mb-4">{{ __('home.contact_form_title') }}</h4>
+                    <form class="contact-form" method="POST" action="{{ route('contact.send') }}">
+                        @csrf
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="name" name="name" placeholder="{{ __('home.name_label') }}" required>
+                                    <label for="name">{{ __('home.name_label') }}</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="email" class="form-control" id="email" name="email" placeholder="{{ __('home.email_placeholder') }}" required>
+                                    <label for="email">{{ __('home.email_placeholder') }}</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <input type="text" class="form-control" id="subject" name="subject" placeholder="{{ __('home.subject') }}" required>
+                                    <label for="subject">{{ __('home.subject') }}</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <textarea class="form-control" id="message" name="message" placeholder="{{ __('home.message_label') }}" style="height: 120px;" required></textarea>
+                                    <label for="message">{{ __('home.message_label') }}</label>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-primary btn-lg w-100">
+                                    <i class="fas fa-paper-plane me-2"></i>{{ __('home.send_button') }}
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
             <!-- Google Map -->
-            <div class="col-md-6">
-                <h3 class="fw-bold mb-3">{{ __('home.location_title') }}</h3>
-                <div class="ratio ratio-16x9">
-                    <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3454.253429284081!2d31.342564!3d30.067238!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14583e5b3d21bb6f%3A0x9c35d4cf0c8a69f!2zMTA!5e0!3m2!1sen!2seg!4v1693234567890"
-                        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
-                        title="موقع مؤسسة الراشد على الخريطة">
+            <div class="col-lg-6">
+                <div class="map-wrapper fade-in" style="animation-delay: 0.6s;">
+                    <h4 class="mb-4">{{ __('home.location_title') }}</h4>
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3454.253429284081!2d31.342564!3d30.067238!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14583e5b3d21bb6f%3A0x9c35d4cf0c8a69f!2zMTA!5e0!3m2!1sen!2seg!4v1693234567890" 
+                        width="100%" 
+                        height="400" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        title="موقع مؤسسة الراشد على الخريطة"
+                        class="google-map">
                     </iframe>
                 </div>
             </div>
