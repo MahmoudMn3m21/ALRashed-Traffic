@@ -253,6 +253,56 @@ function initProgressBarLoader() {
     });
 }
 
+// Progress Scroll Indicator
+function initProgressScrollIndicator() {
+    const progressBar = document.createElement('div');
+    progressBar.id = 'scroll-progress-bar';
+    document.body.appendChild(progressBar);
+
+    window.addEventListener('scroll', () => {
+        const scrollTop = window.pageYOffset;
+        const docHeight = document.body.scrollHeight - window.innerHeight;
+        const scrollPercent = (scrollTop / docHeight) * 100;
+        progressBar.style.width = scrollPercent + '%';
+    });
+}
+
+// Sticky Contact Button
+function initStickyContactButton() {
+    const contactBtn = document.createElement('a');
+    contactBtn.innerHTML = '<i class="fab fa-whatsapp"></i>';
+    contactBtn.className = 'sticky-contact-btn';
+    contactBtn.href = 'https://wa.me/201000864742';
+    contactBtn.target = '_blank';
+    contactBtn.setAttribute('data-bs-toggle', 'tooltip');
+    contactBtn.setAttribute('data-bs-placement', 'left');
+    contactBtn.setAttribute('title', 'Contact us on WhatsApp');
+    
+    document.body.appendChild(contactBtn);
+}
+
+// CTA Highlight on Scroll
+function initCTAHighlight() {
+    const ctaButtons = document.querySelectorAll('.btn-primary, .btn-light[href*="contact"], a[href*="contact"].btn');
+    
+    window.addEventListener('scroll', () => {
+        const scrollTop = window.pageYOffset;
+        const docHeight = document.body.scrollHeight - window.innerHeight;
+        const scrollPercent = (scrollTop / docHeight) * 100;
+        
+        // Highlight CTA when user scrolls past 70% of the page
+        if (scrollPercent > 70) {
+            ctaButtons.forEach(btn => {
+                btn.classList.add('cta-highlight');
+            });
+        } else {
+            ctaButtons.forEach(btn => {
+                btn.classList.remove('cta-highlight');
+            });
+        }
+    });
+}
+
 // Initialize all enhancements when DOM is loaded
 function initializeEnhancements() {
     // Initialize AOS library if available
@@ -273,6 +323,9 @@ function initializeEnhancements() {
     initNavbarScrollEffect();
     initParallaxEffect();
     initFormEnhancements();
+    initProgressScrollIndicator();
+    initStickyContactButton();
+    initCTAHighlight();
     
     console.log('Al Rashed Traffic - Interactive enhancements loaded successfully!');
 }
@@ -307,11 +360,109 @@ enhancementStyles.textContent = `
         transition: width 0.3s ease, opacity 0.3s ease;
     }
 
+    /* Progress Scroll Indicator */
+    #scroll-progress-bar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 3px;
+        background: linear-gradient(90deg, #1e40af, #3b82f6, #facc15);
+        width: 0%;
+        z-index: 1031;
+        transition: width 0.1s ease;
+        box-shadow: 0 2px 4px rgba(30, 64, 175, 0.3);
+    }
+
+    /* Sticky Contact Button */
+    .sticky-contact-btn {
+        position: fixed;
+        bottom: 30px;
+        left: 30px;
+        width: 60px;
+        height: 60px;
+        background: #25d366;
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        font-size: 24px;
+        z-index: 1000;
+        box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+        transition: all 0.3s ease;
+        animation: pulse-contact 2s infinite;
+    }
+
+    .sticky-contact-btn:hover {
+        transform: scale(1.1);
+        background: #128c7e;
+        color: white;
+        text-decoration: none;
+        box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
+    }
+
+    @keyframes pulse-contact {
+        0% { box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4); }
+        50% { box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4), 0 0 0 10px rgba(37, 211, 102, 0.1); }
+        100% { box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4); }
+    }
+
+    /* CTA Highlight Animation */
+    .cta-highlight {
+        animation: cta-glow 1.5s ease-in-out infinite alternate;
+        position: relative;
+        overflow: hidden;
+    }
+
+    @keyframes cta-glow {
+        0% {
+            box-shadow: 0 4px 12px rgba(30, 64, 175, 0.3);
+            transform: translateY(-2px);
+        }
+        100% {
+            box-shadow: 0 8px 25px rgba(30, 64, 175, 0.6);
+            transform: translateY(-4px);
+        }
+    }
+
+    .cta-highlight::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+        animation: shine 2s infinite;
+    }
+
+    @keyframes shine {
+        0% { left: -100%; }
+        100% { left: 100%; }
+    }
+
     /* Navbar scroll effect */
     .navbar-scrolled {
         background: rgba(255, 255, 255, 0.95) !important;
         backdrop-filter: blur(10px);
         box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar-scrolled .navbar-nav .nav-link {
+        color: #333 !important;
+    }
+
+    .navbar-scrolled .navbar-nav .nav-link:hover {
+        color: #007bff !important;
+    }
+
+    .navbar-scrolled .navbar-nav .nav-link.active {
+        color: #007bff !important;
+    }
+
+    .navbar-scrolled .navbar-brand {
+        color: #333 !important;
     }
 
     /* Scroll to top button hover */
@@ -332,5 +483,34 @@ enhancementStyles.textContent = `
 
     .btn:hover { transform: translateY(-2px); }
     .card:hover { transform: translateY(-5px); }
+
+    /* Mobile Responsiveness */
+    @media (max-width: 768px) {
+        .sticky-contact-btn {
+            width: 50px;
+            height: 50px;
+            font-size: 20px;
+            bottom: 20px;
+            left: 20px;
+        }
+        
+        .scroll-to-top {
+            width: 45px;
+            height: 45px;
+            bottom: 20px;
+            right: 20px;
+        }
+        
+        #scroll-progress-bar {
+            height: 2px;
+        }
+    }
 `;
 document.head.appendChild(enhancementStyles);
+
+// Initialize enhancements when DOM is loaded
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeEnhancements);
+} else {
+    initializeEnhancements();
+}

@@ -95,7 +95,7 @@
         </div>
         
         <div class="row g-5">
-            <div class="col-lg-6">
+            <div class="col-lg-6" data-aos="fade-right" data-aos-duration="800">
                 <div class="mission-vision-card bg-white rounded-4 shadow-lg p-5 h-100">
                     <div class="card-icon mission mb-4">
                         <div class="icon-wrapper d-inline-flex align-items-center justify-content-center rounded-circle bg-primary" style="width: 80px; height: 80px;">
@@ -106,7 +106,7 @@
                     <p class="mb-0">{{ __('about.mission_text') }}</p>
                 </div>
             </div>
-            <div class="col-lg-6">
+            <div class="col-lg-6" data-aos="fade-left" data-aos-duration="800">
                 <div class="mission-vision-card bg-white rounded-4 shadow-lg p-5 h-100">
                     <div class="card-icon vision mb-4">
                         <div class="icon-wrapper d-inline-flex align-items-center justify-content-center rounded-circle bg-primary" style="width: 80px; height: 80px;">
@@ -124,7 +124,7 @@
 <!-- Services Section -->
 <section class="section-padding">
     <div class="container">
-        <div class="section-header text-center fade-in">
+        <div class="section-header text-center" data-aos="fade-up" data-aos-duration="800">
             <h2 class="section-title mb-4">{{ __('about.services_title') }}</h2>
             <div class="title-divider mx-auto mb-4"></div>
             <p class="section-subtitle mb-5">{{ __('about.services_subtitle') }}</p>

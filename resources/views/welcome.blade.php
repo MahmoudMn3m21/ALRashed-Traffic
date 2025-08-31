@@ -19,15 +19,15 @@
         
         <div class="container position-relative">
             <div class="row align-items-center min-vh-100">
-                <div class="col-lg-6 fade-in">
+                <div class="col-lg-6" data-aos="fade-up" data-aos-duration="1000">
                     <h1 class="hero-title mb-4">{{ __('home.hero_title') }}</h1>
                     <p class="hero-subtitle mb-4">{{ __('home.hero_subtitle') }}</p>
-                    <div class="hero-buttons">
+                    <div class="hero-buttons" data-aos="fade-up" data-aos-delay="200">
                         <a href="#products" class="btn btn-primary btn-lg me-3 smooth-scroll">{{ __('home.view_products') }}</a>
                         <a href="{{ url('/contact') }}" class="btn btn-outline-light btn-lg">{{ __('navbar.contact') }}</a>
                     </div>
                 </div>
-                <div class="col-lg-6 text-center slide-in-right">
+                <div class="col-lg-6 text-center" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="300">
                     <div class="hero-image-wrapper">
                         <img src="{{ asset('images/logo.png') }}" alt="Alrashed Traffic"
                             class="img-fluid hero-image">
@@ -49,7 +49,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12 text-center mb-5">
-                <div class="section-header fade-in">
+                <div class="section-header" data-aos="fade-up" data-aos-duration="800">
                     <h2 class="section-title">{{ __('home.our_products') }}</h2>
                     <p class="section-subtitle">{{ __('home.products_description') }}</p>
                     <div class="title-divider"></div>
@@ -59,7 +59,7 @@
         <div class="row g-4">
             @foreach ($products as $index => $product)
                 <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="product-card h-100 fade-in" style="animation-delay: {{ $index * 0.1 }}s;">
+                    <div class="product-card h-100" data-aos="fade-up" data-aos-duration="600" data-aos-delay="{{ $index * 100 }}">
                         <div class="product-image-wrapper">
                             <img src="{{ $product->image ? asset('storage/' . $product->image) : asset('images/placeholder.jpg') }}"
                                 class="product-image" alt="{{ $product->getName() }}">
@@ -86,7 +86,7 @@
             @endforeach
         </div>
         <div class="row">
-            <div class="col-12 text-center mt-5">
+            <div class="col-12 text-center mt-5" data-aos="fade-up" data-aos-duration="600">
                 <a href="{{ url('/products') }}" class="btn btn-primary btn-lg">
                     {{ __('home.view_all_products') }}
                     <i class="fas fa-arrow-right ms-2"></i>

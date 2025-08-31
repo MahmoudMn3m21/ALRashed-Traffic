@@ -10,6 +10,9 @@
     <link rel="icon" type="image/png" href="{{ asset('images/favicon.png') }}">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- AOS Animation Library CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <!-- Styles / Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -64,13 +67,13 @@
                     <ul class="navbar-nav {{ app()->getLocale() == 'ar' ? 'me-3' : 'ms-3' }}">
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="languageDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="cursor: pointer;">
-                                <i class="fas fa-globe me-1"></i>
+                                <i class="fas fa-globe mx-1"></i>
                                 <span class="fw-medium">{{ app()->getLocale() == 'ar' ? 'العربية' : 'English' }}</span>
                             </a>
                             <ul class="dropdown-menu {{ app()->getLocale() == 'ar' ? 'dropdown-menu-start' : 'dropdown-menu-end' }}" aria-labelledby="languageDropdown">
                                 <li>
                                     <a class="dropdown-item d-flex align-items-center {{ app()->getLocale() == 'en' ? 'active' : '' }}" href="{{ url('/lang/en') }}">
-                                        <span class="me-2">🇺🇸</span>
+                                        <span class="mx-2">US</span>
                                         <span>English</span>
                                         @if(app()->getLocale() == 'en')
                                             <i class="fas fa-check ms-auto text-primary"></i>
@@ -79,7 +82,7 @@
                                 </li>
                                 <li>
                                     <a class="dropdown-item d-flex align-items-center {{ app()->getLocale() == 'ar' ? 'active' : '' }}" href="{{ url('/lang/ar') }}">
-                                        <span class="me-2">🇸🇦</span>
+                                        <span class="mx-2">EG</span>
                                         <span>العربية</span>
                                         @if(app()->getLocale() == 'ar')
                                             <i class="fas fa-check ms-auto text-primary"></i>
