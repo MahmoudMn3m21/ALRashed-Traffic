@@ -3,46 +3,46 @@
 @section('title', __('navbar.home'))
 
 @section('content')
-    <!-- Hero Section -->
-    <section class="hero-section position-relative overflow-hidden">
-        <!-- Animated Background -->
-        <div class="hero-bg">
-            <div class="gradient-overlay"></div>
-            <div class="particles">
-                <div class="particle"></div>
-                <div class="particle"></div>
-                <div class="particle"></div>
-                <div class="particle"></div>
-                <div class="particle"></div>
-            </div>
+<!-- Hero Section -->
+<section class="hero-section position-relative overflow-hidden">
+    <!-- Animated Background -->
+    <div class="hero-bg">
+        <div class="gradient-overlay"></div>
+        <div class="particles">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
         </div>
-        
-        <div class="container position-relative">
-            <div class="row align-items-center min-vh-100">
-                <div class="col-lg-6" data-aos="fade-up" data-aos-duration="1000">
-                    <h1 class="hero-title mb-4">{{ __('home.hero_title') }}</h1>
-                    <p class="hero-subtitle mb-4">{{ __('home.hero_subtitle') }}</p>
-                    <div class="hero-buttons" data-aos="fade-up" data-aos-delay="200">
-                        <a href="#products" class="btn btn-primary btn-lg me-3 smooth-scroll">{{ __('home.view_products') }}</a>
-                        <a href="{{ url('/contact') }}" class="btn btn-outline-light btn-lg">{{ __('navbar.contact') }}</a>
-                    </div>
-                </div>
-                <div class="col-lg-6 text-center" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="300">
-                    <div class="hero-image-wrapper">
-                        <img src="{{ asset('images/logo.png') }}" alt="Alrashed Traffic"
-                            class="img-fluid hero-image">
-                    </div>
+    </div>
+
+    <div class="container position-relative">
+        <div class="row align-items-center min-vh-100">
+            <div class="col-lg-6" data-aos="fade-up" data-aos-duration="1000">
+                <h1 class="hero-title mb-4">{{ __('home.hero_title') }}</h1>
+                <p class="hero-subtitle mb-4">{{ __('home.hero_subtitle') }}</p>
+                <div class="hero-buttons" data-aos="fade-up" data-aos-delay="200">
+                    <a href="#products" class="btn btn-primary btn-lg me-3 smooth-scroll">{{ __('home.view_products') }}</a>
+                    <a href="{{ url('/contact') }}" class="btn btn-outline-light btn-lg">{{ __('navbar.contact') }}</a>
                 </div>
             </div>
-            
-            <!-- Scroll Indicator -->
-            <div class="scroll-indicator">
-                <a href="#products" class="smooth-scroll">
-                    <i class="fas fa-chevron-down"></i>
-                </a>
+            <div class="col-lg-6 text-center" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="300">
+                <div class="hero-image-wrapper">
+                    <img src="{{ asset('images/logo.png') }}" alt="Alrashed Traffic"
+                        class="img-fluid hero-image">
+                </div>
             </div>
         </div>
-    </section>
+
+        <!-- Scroll Indicator -->
+        <div class="scroll-indicator">
+            <a href="#products" class="smooth-scroll">
+                <i class="fas fa-chevron-down"></i>
+            </a>
+        </div>
+    </div>
+</section>
 
 <!-- Products Section -->
 <section class="section-padding" id="products">
@@ -58,31 +58,31 @@
         </div>
         <div class="row g-4">
             @foreach ($products as $index => $product)
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="product-card h-100" data-aos="fade-up" data-aos-duration="600" data-aos-delay="{{ $index * 100 }}">
-                        <div class="product-image-wrapper">
-                            <img src="{{ $product->image ? asset('storage/' . $product->image) : asset('images/placeholder.jpg') }}"
-                                class="product-image" alt="{{ $product->getName() }}">
-                            <div class="product-overlay">
-                                <a href="{{ route('products.show', $product) }}" class="btn btn-light btn-sm">
-                                    <i class="fas fa-eye me-2"></i>{{ __('home.view_details') }}
-                                </a>
-                            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="product-card h-100" data-aos="fade-up" data-aos-duration="600" data-aos-delay="{{ $index * 100 }}">
+                    <div class="product-image-wrapper text-center">
+                        <img src="{{ $product->image ? asset('storage/' . $product->image) : asset('images/placeholder.jpg') }}"
+                            class="product-image" alt="{{ $product->getName() }}">
+                        <div class="product-overlay">
+                            <a href="{{ route('products.show', $product) }}" class="btn btn-light btn-sm">
+                                <i class="fas fa-eye me-2"></i>{{ __('home.view_details') }}
+                            </a>
                         </div>
-                        <div class="product-content">
-                            <h5 class="product-title">{{ $product->getName() }}</h5>
-                            <p class="product-subtitle">{{ $product->getAlternateName() }}</p>
-                            <p class="product-description">{{ Str::limit($product->description, 100) }}</p>
-                            <div class="product-features">
-                                @if($product->features)
-                                    @foreach(array_slice(explode(',', $product->features), 0, 2) as $feature)
-                                        <span class="feature-tag">{{ trim($feature) }}</span>
-                                    @endforeach
-                                @endif
-                            </div>
+                    </div>
+                    <div class="product-content">
+                        <h5 class="product-title">{{ $product->getName() }}</h5>
+                        <p class="product-subtitle">{{ $product->getAlternateName() }}</p>
+                        <p class="product-description">{{ Str::limit($product->description, 100) }}</p>
+                        <div class="product-features">
+                            @if($product->features)
+                            @foreach(array_slice(explode(',', $product->features), 0, 2) as $feature)
+                            <span class="feature-tag">{{ trim($feature) }}</span>
+                            @endforeach
+                            @endif
                         </div>
                     </div>
                 </div>
+            </div>
             @endforeach
         </div>
         <div class="row">
@@ -110,17 +110,17 @@
         </div>
         <div class="row g-4">
             @foreach ($clients as $index => $client)
-                <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
-                    <div class="client-card fade-in" style="animation-delay: {{ $index * 0.05 }}s;">
-                        <div class="client-logo-wrapper">
-                            <img src="{{ $client->logo ? asset('storage/' . $client->logo) : asset('images/placeholder.jpg') }}"
-                                class="client-logo" alt="{{ $client->name }}">
-                        </div>
-                        <div class="client-info">
-                            <h6 class="client-name">{{ $client->name }}</h6>
-                        </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                <div class="client-card fade-in" style="animation-delay: {{ $index * 0.05 }}s;">
+                    <div class="client-logo-wrapper">
+                        <img src="{{ $client->logo ? asset('storage/clients/' . $client->logo) : asset('images/placeholder.jpg') }}"
+                            class="client-logo" alt="{{ $client->name }}">
+                    </div>
+                    <div class="client-info">
+                        <h6 class="client-name">{{ $client->name }}</h6>
                     </div>
                 </div>
+            </div>
             @endforeach
         </div>
         <div class="row">
@@ -148,30 +148,30 @@
         </div>
         <div class="row g-4">
             @foreach ($projects as $index => $project)
-                <div class="col-lg-4 col-md-6 mb-4">
-                    <div class="project-card fade-in" style="animation-delay: {{ $index * 0.1 }}s;">
-                        <div class="project-image-wrapper">
-                            <img src="{{ $project->image ? asset('storage/' . $project->image) : asset('images/placeholder.jpg') }}"
-                                class="project-image" alt="{{ $project->getTitle() }}">
-                            <div class="project-overlay">
-                                <div class="project-overlay-content">
-                                    <h5 class="project-overlay-title">{{ $project->getTitle() }}</h5>
-                                    <p class="project-overlay-subtitle">{{ $project->getAlternateTitle() }}</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="project-content">
-                            <h5 class="project-title">{{ $project->getTitle() }}</h5>
-                            <p class="project-subtitle">{{ $project->getAlternateTitle() }}</p>
-                            <p class="project-description">{{ Str::limit($project->getDescription(), 80) }}</p>
-                            <div class="project-meta">
-                                <span class="project-category">
-                                    <i class="fas fa-tag me-1"></i>Traffic Solutions
-                                </span>
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="project-card fade-in" style="animation-delay: {{ $index * 0.1 }}s;">
+                    <div class="project-image-wrapper text-center">
+                        <img src="{{ $project->image ? asset('storage/projects/' . $project->image) : asset('images/placeholder.jpg') }}"
+                            class="project-image" alt="{{ $project->getTitle() }}">
+                        <div class="project-overlay">
+                            <div class="project-overlay-content">
+                                <h5 class="project-overlay-title">{{ $project->getTitle() }}</h5>
+                                <p class="project-overlay-subtitle">{{ $project->getAlternateTitle() }}</p>
                             </div>
                         </div>
                     </div>
+                    <div class="project-content">
+                        <h5 class="project-title">{{ $project->getTitle() }}</h5>
+                        <p class="project-subtitle">{{ $project->getAlternateTitle() }}</p>
+                        <p class="project-description">{{ Str::limit($project->getDescription(), 80) }}</p>
+                        <div class="project-meta">
+                            <span class="project-category">
+                                <i class="fas fa-tag me-1"></i>Traffic Solutions
+                            </span>
+                        </div>
+                    </div>
                 </div>
+            </div>
             @endforeach
         </div>
         <div class="row">
@@ -197,7 +197,7 @@
                 </div>
             </div>
         </div>
-        
+
         <!-- Contact Info Cards -->
         <div class="row g-4 mb-5">
             <div class="col-lg-3 col-md-6">
@@ -243,7 +243,7 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="row g-5">
             <!-- Contact Form -->
             <div class="col-lg-6">
@@ -285,19 +285,21 @@
                     </form>
                 </div>
             </div>
-            
+
             <!-- Google Map -->
             <div class="col-lg-6">
                 <div class="map-wrapper fade-in" style="animation-delay: 0.6s;">
                     <h4 class="mb-4">{{ __('home.location_title') }}</h4>
-                    <iframe 
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3454.253429284081!2d31.342564!3d30.067238!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14583e5b3d21bb6f%3A0x9c35d4cf0c8a69f!2zMTA!5e0!3m2!1sen!2seg!4v1693234567890" 
-                        width="100%" 
-                        height="400" 
-                        style="border:0;" 
-                        allowfullscreen="" 
-                        loading="lazy" 
-                        title="موقع مؤسسة الراشد على الخريطة"
+
+                    <iframe
+                        src="https://www.google.com/maps?q=10%20El%20Gahez%20Street,%20Nasr%20City,%20Cairo,%20Egypt&output=embed"
+                        width="100%"
+                        height="400"
+                        style="border:0;"
+                        allowfullscreen
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"
+                        title="El Rashed Institution location on Google Maps"
                         class="google-map">
                     </iframe>
                 </div>

@@ -17,8 +17,8 @@ class ClientForm
                     ->maxLength(255),
                 FileUpload::make('logo')
                     ->image()
-                    ->disk('public')
-                    ->directory('clients')
+                    ->disk('clients_public')
+                    ->directory('') // already inside projects folder
                     ->visibility('public')
                     ->imagePreviewHeight('100')
                     ->maxSize(2048)

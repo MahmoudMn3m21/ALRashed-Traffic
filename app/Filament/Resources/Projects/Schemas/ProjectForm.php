@@ -25,8 +25,8 @@ class ProjectForm
                     ->columnSpanFull(),
                 FileUpload::make('image')
                     ->image()
-                    ->disk('public')
-                    ->directory('projects')
+                    ->disk('projects_public')
+                    ->directory('') // already inside projects folder
                     ->visibility('public')
                     ->required(),
             ]);

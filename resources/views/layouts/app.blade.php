@@ -10,7 +10,7 @@
     <link rel="icon" type="image/png" href="{{ asset('images/favicon.png') }}">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+
     <!-- AOS Animation Library CSS -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
@@ -76,7 +76,7 @@
                                         <span class="mx-2">US</span>
                                         <span>English</span>
                                         @if(app()->getLocale() == 'en')
-                                            <i class="fas fa-check ms-auto text-primary"></i>
+                                        <i class="fas fa-check ms-auto text-primary"></i>
                                         @endif
                                     </a>
                                 </li>
@@ -85,7 +85,7 @@
                                         <span class="mx-2">EG</span>
                                         <span>العربية</span>
                                         @if(app()->getLocale() == 'ar')
-                                            <i class="fas fa-check ms-auto text-primary"></i>
+                                        <i class="fas fa-check ms-auto text-primary"></i>
                                         @endif
                                     </a>
                                 </li>
@@ -105,7 +105,7 @@
                                         dropdownMenu.classList.toggle('show');
                                     }
                                 });
-                                
+
                                 // Close dropdown when clicking outside
                                 document.addEventListener('click', function(e) {
                                     if (!languageDropdown.contains(e.target)) {
@@ -210,7 +210,8 @@
                 <div class="row align-items-center">
                     <div class="col-md-12 text-center">
                         <p class="mb-0">&copy; {{ date('Y') }} {{ __('footer.company_name') }}.
-                            {{ __('footer.all_rights_reserved') }}.</p>
+                            {{ __('footer.all_rights_reserved') }}.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -218,13 +219,13 @@
     </div>
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    
+
     <!-- AOS Animation Library -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    
+
     <!-- Interactive Enhancements -->
     @vite(['resources/js/enhancements.js'])
-    
+
     <!-- Page-specific scripts -->
     @stack('scripts')
 </body>

@@ -17,34 +17,37 @@ class ProductForm
                     ->label('Name (English)')
                     ->required()
                     ->maxLength(255),
-                
+
                 TextInput::make('name_ar')
                     ->label('Name (Arabic)')
                     ->required()
                     ->maxLength(255),
-                
+
                 FileUpload::make('image')
-                    ->disk('public')
-                    ->directory('products')
                     ->image()
+                    ->disk('products_public')
+                    ->directory('') // already inside projects folder
+                    ->visibility('public')
+                    ->required()
                     ->imagePreviewHeight('250'),
-                
+
+
                 Textarea::make('description')
                     ->rows(3),
-                
+
                 TextInput::make('code')
                     ->maxLength(255),
-                
+
                 TextInput::make('material')
                     ->maxLength(255),
-                
+
                 TextInput::make('color')
                     ->maxLength(255),
-                
+
                 Textarea::make('features')
                     ->rows(3)
                     ->columnSpanFull(),
-                
+
                 Textarea::make('usages')
                     ->rows(3)
                     ->columnSpanFull(),

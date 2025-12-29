@@ -2,7 +2,13 @@
     <IfModule mod_negotiation.c>
         Options -MultiViews -Indexes
     </IfModule>
-
+    <IfModule mod_headers.c>
+        <FilesMatch "\.(png|jpg|jpeg|gif|webp|svg)$">
+            Header set Access-Control-Allow-Origin "*"
+            Header set Access-Control-Allow-Methods "GET, OPTIONS"
+            Header set Access-Control-Allow-Headers "Content-Type, Authorization"
+        </FilesMatch>
+    </IfModule>
     RewriteEngine On
 
     # Handle Authorization Header
