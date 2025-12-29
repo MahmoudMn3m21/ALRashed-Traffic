@@ -62,20 +62,9 @@
                             alt="{{ $product->getName() }}" class="product-image">
                         @endif
                         <div class="product-overlay">
-                            <div class="product-overlay-content">
-                                <h3 class="product-overlay-title">{{ $product->getName() }}</h3>
-                                @if ($product->code)
-                                <p class="product-overlay-subtitle">Code: {{ $product->code }}</p>
-                                @endif
-                                <div class="overlay-actions">
-                                    <button class="btn btn-light btn-sm rounded-pill me-2"
-                                        data-bs-toggle="modal"
-                                        data-bs-target="#productModal{{ $product->id }}">
-                                        <i class="fas fa-eye me-1"></i>
-                                        {{ __('products.view_details') }}
-                                    </button>
-                                </div>
-                            </div>
+                            <a href="{{ route('products.show', $product) }}" class="btn btn-light btn-sm">
+                                <i class="fas fa-eye me-2"></i>{{ __('home.view_details') }}
+                            </a>
                         </div>
                     </div>
                     <div class="product-content p-4">
@@ -183,7 +172,7 @@
 </section>
 
 <!-- Call to Action Section -->
-<section class="section-padding bg-primary text-white">
+<section class="section-padding text-dark" style="background-color: #f5f5f5ff;">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-8">

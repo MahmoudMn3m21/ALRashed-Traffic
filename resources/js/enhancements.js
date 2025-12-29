@@ -63,7 +63,7 @@ function initAnimateOnScroll() {
             observer.observe(element);
         });
     });
-    
+
     // Also observe any existing elements with data-aos attributes
     document.querySelectorAll('[data-aos]').forEach(element => {
         observer.observe(element);
@@ -147,7 +147,7 @@ function initScrollToTop() {
         right: 30px;
         width: 50px;
         height: 50px;
-        background: var(--primary-color, #007bff);
+        background: var(--primary-color, #fbb116);
         color: white;
         border: none;
         border-radius: 50%;
@@ -156,7 +156,7 @@ function initScrollToTop() {
         opacity: 0;
         visibility: hidden;
         transition: all 0.3s ease;
-        box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+        box-shadow: 0 4px 12px rgba(251, 177, 22, 0.4);
     `;
 
     scrollBtn.addEventListener('click', () => {
@@ -277,19 +277,19 @@ function initStickyContactButton() {
     contactBtn.setAttribute('data-bs-toggle', 'tooltip');
     contactBtn.setAttribute('data-bs-placement', 'left');
     contactBtn.setAttribute('title', 'Contact us on WhatsApp');
-    
+
     document.body.appendChild(contactBtn);
 }
 
 // CTA Highlight on Scroll
 function initCTAHighlight() {
     const ctaButtons = document.querySelectorAll('.btn-primary, .btn-light[href*="contact"], a[href*="contact"].btn');
-    
+
     window.addEventListener('scroll', () => {
         const scrollTop = window.pageYOffset;
         const docHeight = document.body.scrollHeight - window.innerHeight;
         const scrollPercent = (scrollTop / docHeight) * 100;
-        
+
         // Highlight CTA when user scrolls past 70% of the page
         if (scrollPercent > 70) {
             ctaButtons.forEach(btn => {
@@ -314,7 +314,7 @@ function initializeEnhancements() {
             offset: 100
         });
     }
-    
+
     initSmoothScroll();
     initAnimateOnScroll();
     initTooltips();
@@ -326,7 +326,7 @@ function initializeEnhancements() {
     initProgressScrollIndicator();
     initStickyContactButton();
     initCTAHighlight();
-    
+
     console.log('Al Rashed Traffic - Interactive enhancements loaded successfully!');
 }
 
@@ -354,7 +354,7 @@ enhancementStyles.textContent = `
         top: 0;
         left: 0;
         height: 4px;
-        background: linear-gradient(90deg, #1e40af, #3b82f6);
+        background: linear-gradient(90deg, var(--primary-color, #fbb116), var(--secondary-color, #fdcf6a));
         width: 0%;
         z-index: 99999;
         transition: width 0.3s ease, opacity 0.3s ease;
@@ -366,11 +366,11 @@ enhancementStyles.textContent = `
         top: 0;
         left: 0;
         height: 3px;
-        background: linear-gradient(90deg, #1e40af, #3b82f6, #facc15);
+        background: linear-gradient(90deg, var(--primary-color, #fbb116), var(--secondary-color, #fdcf6a), var(--accent-color, #253861));
         width: 0%;
         z-index: 1031;
         transition: width 0.1s ease;
-        box-shadow: 0 2px 4px rgba(30, 64, 175, 0.3);
+        box-shadow: 0 2px 4px rgba(251, 177, 22, 0.4);
     }
 
     /* Sticky Contact Button */
@@ -417,7 +417,7 @@ enhancementStyles.textContent = `
 
     @keyframes cta-glow {
         0% {
-            box-shadow: 0 4px 12px rgba(30, 64, 175, 0.3);
+            box-shadow: 0 4px 12px rgba(37, 56, 97, 0.35);
             transform: translateY(-2px);
         }
         100% {
@@ -473,7 +473,7 @@ enhancementStyles.textContent = `
 
     /* Form floating labels */
     .form-floating.focused label {
-        color: var(--primary-color, #007bff);
+        color: var(--primary-color, #fbb116);
     }
 
     /* Smooth transitions */
