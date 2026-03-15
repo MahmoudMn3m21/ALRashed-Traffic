@@ -7,6 +7,8 @@ use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\HomeController;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Artisan;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
@@ -33,3 +35,27 @@ Route::get('/lang/{locale}', function ($locale) {
     }
     return redirect()->back();
 })->name('lang.switch');
+
+Route::get('/mail-test', function () {
+
+    Mail::raw('Laravel mail test is working 🎉', function ($mail) {
+        $mail->to('mahmoudmn3m007@gmail.com')
+            ->subject('Laravel SMTP Test');
+    });
+
+    return 'Mail sent successfully';
+});
+
+Route::get('/clear-cache', function () {
+    Artisan::call('cache:clear');
+    Artisan::call('config:clear');
+    Artisan::call('config:cache');
+    Artisan::call('view:clear');
+
+    return "Application cache cleared successfully.";
+});
+
+Route::get('/storage-link', function () {
+    Artisan::call('storage:link');
+    return "Storage link created successfully.";
+});
