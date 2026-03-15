@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\Products\Schemas;
 
 use Filament\Forms\Components\FileUpload;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Schema;
@@ -13,6 +14,13 @@ class ProductForm
     {
         return $schema
             ->components([
+                Select::make('category_id')
+                    ->label('Category')
+                    ->relationship('category', 'name_en')
+                    ->searchable()
+                    ->preload()
+                    ->nullable(),
+
                 TextInput::make('name_en')
                     ->label('Name (English)')
                     ->required()

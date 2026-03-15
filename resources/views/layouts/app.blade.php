@@ -46,8 +46,13 @@
                                 href="{{ url('/about') }}">{{ __('navbar.about') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {{ request()->is('products*') ? 'active' : '' }}"
-                                href="{{ url('/products') }}">{{ __('navbar.products') }}</a>
+                            <a class="nav-link {{ request()->is('products*') || request()->is('categories*') ? 'active' : '' }}" href="{{ route('products.index') }}">{{ __('navbar.products') }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ request()->is('catalog*') ? 'active' : '' }}" href="{{ route('catalog.index') }}">{{ __('navbar.catalog') }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ request()->is('gallery*') ? 'active' : '' }}" href="{{ route('gallery.index') }}">{{ __('navbar.gallery') }}</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link {{ request()->is('projects*') ? 'active' : '' }}"
@@ -163,6 +168,8 @@
                             <li class="mb-2"><a href="{{ url('/') }}">{{ __('navbar.home') }}</a></li>
                             <li class="mb-2"><a href="{{ url('/about') }}">{{ __('navbar.about') }}</a></li>
                             <li class="mb-2"><a href="{{ url('/products') }}">{{ __('navbar.products') }}</a></li>
+                            <li class="mb-2"><a href="{{ route('catalog.index') }}">{{ __('navbar.catalog') }}</a></li>
+                            <li class="mb-2"><a href="{{ route('gallery.index') }}">{{ __('navbar.gallery') }}</a></li>
                             <li class="mb-2"><a href="{{ url('/projects') }}">{{ __('navbar.projects') }}</a></li>
                             <li class="mb-2"><a href="{{ url('/clients') }}">{{ __('navbar.clients') }}</a></li>
                             <li class="mb-2"><a href="{{ url('/contact') }}">{{ __('navbar.contact') }}</a></li>

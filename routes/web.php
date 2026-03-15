@@ -3,9 +3,12 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\CatalogController;
+use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Artisan;
@@ -14,9 +17,13 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/about', [PageController::class, 'about'])->name('about');
 
-// Product routes
-Route::get('/products', [ProductController::class, 'index'])->name('products.index');
-Route::get('/products/{product}', [ProductController::class, 'show'])->name('products.show');
+// Categories (products landing: show categories first)
+Route::get('/categories', [CategoryController::class, 'index'])->name('categories.index');
+Route::get('/categories/{category}', [ProductController::class, 'indexByCategory'])->name('categories.products');
+// Products: nav "Products" -> categories page; then products by category
+Route::get('/products', [CategoryController::class, 'index'])->name('products.index');
+Route::get('/products/category/{category}', [ProductController::class, 'indexByCategory'])->name('products.by_category');
+Route::get('/product/{product}', [ProductController::class, 'show'])->name('products.show');
 
 // Project routes
 Route::resource('projects', ProjectController::class);
@@ -27,6 +34,12 @@ Route::post('/contact/send', [ContactController::class, 'send'])->name('contact.
 
 // Client routes
 Route::get('/clients', [ClientController::class, 'index'])->name('clients.index');
+
+// Catalog (PDFs)
+Route::get('/catalog', [CatalogController::class, 'index'])->name('catalog.index');
+
+// Gallery (images)
+Route::get('/gallery', [GalleryController::class, 'index'])->name('gallery.index');
 
 // Language switching route
 Route::get('/lang/{locale}', function ($locale) {

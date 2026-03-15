@@ -4,24 +4,17 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Product extends Model
+class Category extends Model
 {
     protected $fillable = [
-        'category_id',
         'name_en',
         'name_ar',
         'image',
-        'description',
-        'code',
-        'material',
-        'color',
-        'features',
-        'usages'
     ];
 
-    public function category()
+    public function products()
     {
-        return $this->belongsTo(Category::class);
+        return $this->hasMany(Product::class);
     }
 
     public function getName()
@@ -33,6 +26,4 @@ class Product extends Model
     {
         return app()->getLocale() === 'ar' ? $this->name_en : $this->name_ar;
     }
-
-
 }

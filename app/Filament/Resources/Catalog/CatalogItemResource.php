@@ -1,0 +1,45 @@
+<?php
+
+namespace App\Filament\Resources\Catalog;
+
+use App\Filament\Resources\Catalog\Pages\CreateCatalogItem;
+use App\Filament\Resources\Catalog\Pages\EditCatalogItem;
+use App\Filament\Resources\Catalog\Pages\ListCatalogItems;
+use App\Filament\Resources\Catalog\Schemas\CatalogItemForm;
+use App\Filament\Resources\Catalog\Tables\CatalogItemsTable;
+use App\Models\CatalogItem;
+use BackedEnum;
+use Filament\Resources\Resource;
+use Filament\Schemas\Schema;
+use Filament\Support\Icons\Heroicon;
+use Filament\Tables\Table;
+
+class CatalogItemResource extends Resource
+{
+    protected static ?string $model = CatalogItem::class;
+
+    protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedRectangleStack;
+
+    protected static ?string $recordTitleAttribute = 'title_en';
+
+    protected static ?string $navigationLabel = 'Catalog (PDFs)';
+
+    public static function form(Schema $schema): Schema
+    {
+        return CatalogItemForm::configure($schema);
+    }
+
+    public static function table(Table $table): Table
+    {
+        return CatalogItemsTable::configure($table);
+    }
+
+    public static function getPages(): array
+    {
+        return [
+            'index' => ListCatalogItems::route('/'),
+            'create' => CreateCatalogItem::route('/create'),
+            'edit' => EditCatalogItem::route('/{record}/edit'),
+        ];
+    }
+}

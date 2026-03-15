@@ -6,6 +6,8 @@ return [
     'products' => 'Products',
     'projects' => 'Projects',
     'clients' => 'Clients',
+    'catalog' => 'Catalog',
+    'gallery' => 'Gallery',
     'contact' => 'Contact',
     'language_switcher' => 'Language Switcher',
 ];

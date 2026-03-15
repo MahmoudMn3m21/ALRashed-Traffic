@@ -1,23 +1,24 @@
 <?php
 
-namespace App\Filament\Resources\Products\Tables;
+namespace App\Filament\Resources\Categories\Tables;
 
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
+use Filament\Tables\Columns\ImageColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 
-class ProductsTable
+class CategoriesTable
 {
     public static function configure(Table $table): Table
     {
         return $table
             ->columns([
-                TextColumn::make('category.name_en')
-                    ->label('Category')
-                    ->sortable()
-                    ->searchable(),
+                ImageColumn::make('image')
+                    ->disk('categories_public')
+                    ->square()
+                    ->toggleable(),
 
                 TextColumn::make('name_en')
                     ->label('Name (English)')
@@ -29,22 +30,15 @@ class ProductsTable
                     ->searchable()
                     ->sortable(),
 
-                TextColumn::make('code')
-                    ->searchable()
-                    ->sortable(),
-
-                TextColumn::make('material')
-                    ->searchable()
-                    ->sortable(),
-
-                TextColumn::make('color')
-                    ->searchable()
+                TextColumn::make('products_count')
+                    ->label('Products')
+                    ->counts('products')
                     ->sortable(),
 
                 TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: false),
+                    ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 //

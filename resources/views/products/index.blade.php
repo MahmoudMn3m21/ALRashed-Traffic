@@ -11,8 +11,18 @@
         <div class="row align-items-center min-vh-100">
             <div class="col-lg-8 mx-auto text-center text-white">
                 <div class="fade-in">
+                    @isset($category)
+                    <nav aria-label="breadcrumb" class="mb-3">
+                        <a href="{{ route('products.index') }}" class="text-white text-decoration-none small">
+                            <i class="fas fa-arrow-{{ app()->getLocale() == 'ar' ? 'right' : 'left' }} me-2"></i>{{ __('categories.back_to_categories') }}
+                        </a>
+                    </nav>
+                    <h1 class="hero-title mb-4">{{ $category->getName() }}</h1>
+                    <p class="hero-subtitle mb-5">{{ __('products.hero_subtitle') }}</p>
+                    @else
                     <h1 class="hero-title mb-4">{{ __('navbar.products') }}</h1>
                     <p class="hero-subtitle mb-5">{{ __('products.hero_subtitle') }}</p>
+                    @endisset
                     <a href="#products-showcase" class="btn btn-light btn-lg px-5 py-3 rounded-pill smooth-scroll">
                         {{ __('products.view_products') }}
                         <i class="fas fa-arrow-down ms-2"></i>
@@ -30,7 +40,7 @@
 <section id="products-showcase" class="section-padding">
     <div class="container">
         <div class="section-header text-center fade-in">
-            <h2 class="section-title mb-4">{{ __('products.page_title') }}</h2>
+            <h2 class="section-title mb-4">@isset($category){{ $category->getName() }}@else{{ __('products.page_title') }}@endisset</h2>
             <div class="title-divider mx-auto mb-4"></div>
             <p class="section-subtitle mb-5">{{ __('products.page_subtitle') }}</p>
         </div>

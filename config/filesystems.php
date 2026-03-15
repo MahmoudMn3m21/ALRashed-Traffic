@@ -56,8 +56,8 @@ return [
 
         'products_public' => [
             'driver' => 'local',
-            'root' => 'storage/products', // physical folder inside public_html
-            'url' => env('APP_URL') . '/storage/products',
+            'root' => 'storage', // physical folder inside public_html
+            'url' => env('APP_URL') . '/storage',
             'visibility' => 'public',
         ],
 
@@ -65,6 +65,27 @@ return [
             'driver' => 'local',
             'root' => 'storage/clients', // physical folder inside public_html
             'url' => env('APP_URL') . '/storage/clients',
+            'visibility' => 'public',
+        ],
+
+        'categories_public' => [
+            'driver' => 'local',
+            'root' => 'storage/categories', // physical folder inside public_html
+            'url' => env('APP_URL') . '/storage/categories',
+            'visibility' => 'public',
+        ],
+
+        'catalog_public' => [
+            'driver' => 'local',
+            'root' => 'storage/catalog', // physical folder inside public_html
+            'url' => env('APP_URL') . '/storage/catalog',
+            'visibility' => 'public',
+        ],
+
+        'gallery_public' => [
+            'driver' => 'local',
+            'root' => 'storage/gallery', // physical folder inside public_html
+            'url' => env('APP_URL') . '/storage/gallery',
             'visibility' => 'public',
         ],
 
