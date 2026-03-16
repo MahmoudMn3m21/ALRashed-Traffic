@@ -54,8 +54,8 @@
                     <div class="accordion accordion-flush" id="categoriesAccordion">
                         @foreach(($mainCategories ?? []) as $main)
                         @php
-                            $isActiveMain = isset($category) && $category->id === $main->id;
-                            $shouldShow = $isActiveMain;
+                        $isActiveMain = isset($category) && $category->id === $main->id;
+                        $shouldShow = $isActiveMain;
                         @endphp
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="heading-{{ $main->id }}">
@@ -75,7 +75,7 @@
                                         </a>
 
                                         @foreach($main->subcategories as $sub)
-                                        <a href="{{ route('products.by_category', $main) }}?subcategory={{ $sub->id }}"
+                                        <a href="{{ route('products.by_category', $main) }}?subcategory={{ $sub->id }}#products-showcase"
                                             class="list-group-item list-group-item-action px-0 ps-3 {{ ((string)($subcategoryId ?? '') === (string)$sub->id) ? 'fw-bold text-primary' : '' }}">
                                             {{ $sub->getName() }}
                                         </a>
@@ -250,4 +250,19 @@
         </div>
     </div>
 </section>
+@if(request()->has('subcategory') || isset($category))
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const showcase = document.getElementById('products-showcase');
+        if (showcase) {
+            setTimeout(() => {
+                showcase.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }, 100);
+        }
+    });
+</script>
+@endif
 @endsection
