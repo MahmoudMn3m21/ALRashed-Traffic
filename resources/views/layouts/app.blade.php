@@ -49,12 +49,6 @@
                             <a class="nav-link {{ request()->is('products*') || request()->is('categories*') ? 'active' : '' }}" href="{{ route('products.index') }}">{{ __('navbar.products') }}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {{ request()->is('catalog*') ? 'active' : '' }}" href="{{ route('catalog.index') }}">{{ __('navbar.catalog') }}</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link {{ request()->is('gallery*') ? 'active' : '' }}" href="{{ route('gallery.index') }}">{{ __('navbar.gallery') }}</a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link {{ request()->is('projects*') ? 'active' : '' }}"
                                 href="{{ url('/projects') }}">{{ __('navbar.projects') }}</a>
                         </li>
@@ -63,8 +57,14 @@
                                 href="{{ url('/clients') }}">{{ __('navbar.clients') }}</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link {{ request()->is('gallery*') ? 'active' : '' }}" href="{{ route('gallery.index') }}">{{ __('navbar.gallery') }}</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link {{ request()->is('contact*') ? 'active' : '' }}"
                                 href="{{ url('/contact') }}">{{ __('navbar.contact') }}</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ request()->is('catalog*') ? 'active' : '' }}" href="{{ route('catalog.index') }}">{{ __('navbar.catalog') }}</a>
                         </li>
                     </ul>
 

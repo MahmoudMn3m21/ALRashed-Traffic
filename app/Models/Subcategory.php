@@ -3,19 +3,19 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Subcategory;
 
-class Category extends Model
+class Subcategory extends Model
 {
     protected $fillable = [
+        'category_id',
         'name_en',
         'name_ar',
-        'image',
+        'sort_order',
     ];
 
-    public function subcategories()
+    public function category()
     {
-        return $this->hasMany(Subcategory::class);
+        return $this->belongsTo(Category::class);
     }
 
     public function products()
@@ -27,9 +27,5 @@ class Category extends Model
     {
         return app()->getLocale() === 'ar' ? $this->name_ar : $this->name_en;
     }
-
-    public function getAlternateName()
-    {
-        return app()->getLocale() === 'ar' ? $this->name_en : $this->name_ar;
-    }
 }
+

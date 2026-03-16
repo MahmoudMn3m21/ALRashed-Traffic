@@ -59,11 +59,11 @@
         <div class="row g-4">
             @foreach ($products as $index => $product)
             <div class="col-lg-4 col-md-6 mb-4">
-                <div class="product-card h-100" data-aos="fade-up" data-aos-duration="600" data-aos-delay="{{ $index * 100 }}">
+                <div class="product-card h-100 text-center" data-aos="fade-up" data-aos-duration="600" data-aos-delay="{{ $index * 100 }}">
                     <div class="product-image-wrapper text-center">
                         <img src="{{ $product->image ? asset('storage/' . $product->image) : asset('images/placeholder.jpg') }}"
                             class="product-image" alt="{{ $product->getName() }}">
-                        <div class="product-overlay">
+                        <div class="product-overlay text-center">
                             <a href="{{ route('products.show', $product) }}" class="btn btn-light btn-sm">
                                 <i class="fas fa-eye me-2"></i>{{ __('home.view_details') }}
                             </a>

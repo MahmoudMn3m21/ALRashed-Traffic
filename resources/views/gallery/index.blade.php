@@ -12,13 +12,28 @@
                 <div class="fade-in">
                     <h1 class="hero-title mb-4">{{ __('navbar.gallery') }}</h1>
                     <p class="hero-subtitle mb-5">{{ __('gallery.hero_subtitle') }}</p>
+                    <a href="#gallery-showcase" class="btn btn-light btn-lg px-5 py-3 rounded-pill smooth-scroll">
+                        View Gallery <i class="fas fa-images ms-2"></i>
+                    </a>
                 </div>
             </div>
         </div>
     </div>
+
+    <div class="hero-particles">
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+        <div class="particle"></div>
+    </div>
+
+    <div class="scroll-indicator">
+        <div class="scroll-arrow"></div>
+    </div>
 </section>
 
-<section class="section-padding">
+<section id="gallery-showcase" class="section-padding">
     <div class="container">
         <h2 class="section-title mb-4 text-center">{{ __('gallery.page_title') }}</h2>
         <div class="title-divider mx-auto mb-5"></div>
