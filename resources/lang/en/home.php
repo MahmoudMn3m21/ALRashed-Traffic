@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'hero_title' => 'Welcome to Alrashed Traffic',
+    'hero_title' => 'WELCOME TO ALRASHED INSTITUTION',
     'hero_subtitle' => 'Specialists in traffic and safety products — We provide comprehensive solutions to ensure road and garage safety with the highest quality and standards.',
     'hero_cta' => 'Explore Our Services',
     'view_products' => 'View Products',

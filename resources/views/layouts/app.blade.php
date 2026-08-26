@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Alrashed Traffic') }} - @yield('title', 'Home')</title>
+    <title>{{ config('app.name', 'ALRASHED INSTITUTION') }} - @yield('title', 'Home')</title>
     <link rel="icon" type="image/png" href="{{ asset('images/favicon.png') }}">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -20,9 +20,9 @@
         <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNavbar">
             <div class="container">
                 <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
-                    <img src="{{ asset('images/logo_white.png') }}" alt="{{ config('app.name', 'Alrashed Traffic') }}"
+                    <img src="{{ asset('images/logo_white.png') }}" alt="{{ config('app.name', 'ALRASHED INSTITUTION') }}"
                         class="me-2" width="38" height="38" decoding="async">
-                    <span class="fw-bold d-none d-sm-inline">{{ config('app.name', 'Alrashed Traffic') }}</span>
+                    <span class="fw-bold d-none d-sm-inline">{{ config('app.name', 'ALRASHED INSTITUTION') }}</span>
                 </a>
 
                 <div class="d-flex align-items-center gap-2 d-lg-none">

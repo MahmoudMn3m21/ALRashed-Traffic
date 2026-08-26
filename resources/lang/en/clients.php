@@ -15,7 +15,7 @@ return [
     'become_client' => 'Become a Client',
     'testimonials_title' => 'Client Testimonials',
     'testimonials_subtitle' => 'What our clients say about us',
-    'sample_testimonial' => 'Alrashed Traffic has been instrumental in improving our traffic management systems. Their professional approach and quality products have exceeded our expectations.',
+    'sample_testimonial' => 'ALRASHED INSTITUTION has been instrumental in improving our traffic management systems. Their professional approach and quality products have exceeded our expectations.',
     'valued_partner' => 'Valued Partner',
     'cta_title' => 'Ready to Partner with Us?',
     'cta_subtitle' => 'Join our growing list of satisfied clients and experience excellence in traffic management',

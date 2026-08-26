@@ -20,7 +20,7 @@
         <div class="row align-items-center min-vh-100">
             <div class="col-lg-7" data-aos="fade-up" data-aos-duration="1000">
                 <p class="text-uppercase mb-3" style="letter-spacing: 0.18em; font-size: 0.78rem; color: var(--accent); font-weight: 600;">
-                    Alrashed Traffic
+                    ALRASHED INSTITUTION
                 </p>
                 <h1 class="hero-title mb-4">{{ __('home.hero_title') }}</h1>
                 <p class="hero-subtitle mb-4">{{ __('home.hero_subtitle') }}</p>
@@ -31,7 +31,7 @@
             </div>
             <div class="col-lg-5 text-center mt-5 mt-lg-0" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="300">
                 <div class="hero-image-wrapper">
-                    <img src="{{ asset('images/logo_white.png') }}" alt="Alrashed Traffic"
+                    <img src="{{ asset('images/logo_white.png') }}" alt="ALRASHED INSTITUTION"
                         class="img-fluid hero-image">
                 </div>
             </div>
