@@ -17,7 +17,7 @@
     </div>
 
     <div class="container position-relative">
-        <div class="row align-items-center min-vh-100">
+        <div class="row align-items-center hero-home-row">
             <div class="col-lg-7" data-aos="fade-up" data-aos-duration="1000">
                 <p class="text-uppercase mb-3" style="letter-spacing: 0.18em; font-size: 0.78rem; color: var(--accent); font-weight: 600;">
                     ALRASHED INSTITUTION

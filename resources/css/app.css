@@ -246,7 +246,7 @@ img {
 .hero,
 .hero-section {
     position: relative;
-    min-height: 100vh;
+    min-height: calc(100dvh - 76px);
     display: flex;
     align-items: center;
     overflow: hidden;
@@ -254,8 +254,8 @@ img {
         radial-gradient(ellipse 80% 50% at 50% -20%, rgba(255, 201, 35, 0.22), transparent 60%),
         radial-gradient(ellipse 50% 40% at 85% 60%, rgba(255, 224, 102, 0.1), transparent 55%),
         linear-gradient(180deg, #0a0c12 0%, var(--bg) 100%);
-    padding-top: 6rem;
-    padding-bottom: 4rem;
+    padding-top: 1.5rem;
+    padding-bottom: 3rem;
     color: var(--text);
 }
 
@@ -270,6 +270,11 @@ img {
     mask-image: radial-gradient(ellipse at center, black 20%, transparent 75%);
     pointer-events: none;
     opacity: 0.5;
+}
+
+.hero-home-row {
+    width: 100%;
+    min-height: 0;
 }
 
 .hero-bg,
