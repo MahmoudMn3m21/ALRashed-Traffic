@@ -20,7 +20,7 @@
         <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNavbar">
             <div class="container">
                 <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
-                    <img src="{{ asset('images/logo.png') }}" alt="{{ config('app.name', 'Alrashed Traffic') }}"
+                    <img src="{{ asset('images/logo_white.png') }}" alt="{{ config('app.name', 'Alrashed Traffic') }}"
                         class="me-2" width="38" height="38" decoding="async">
                     <span class="fw-bold d-none d-sm-inline">{{ config('app.name', 'Alrashed Traffic') }}</span>
                 </a>
@@ -119,20 +119,20 @@
 
         <main id="main-content" class="flex-grow-1" style="padding-top: 76px;" tabindex="-1">
             @if (session('success'))
-                <div class="container mt-3">
-                    <div class="alert alert-success alert-dismissible fade show ux-alert" role="alert">
-                        <i class="fas fa-check-circle me-2"></i>{{ session('success') }}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
+            <div class="container mt-3">
+                <div class="alert alert-success alert-dismissible fade show ux-alert" role="alert">
+                    <i class="fas fa-check-circle me-2"></i>{{ session('success') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
+            </div>
             @endif
             @if ($errors->any())
-                <div class="container mt-3">
-                    <div class="alert alert-danger alert-dismissible fade show ux-alert" role="alert">
-                        <i class="fas fa-exclamation-circle me-2"></i>{{ __('contact.form_error') }}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
+            <div class="container mt-3">
+                <div class="alert alert-danger alert-dismissible fade show ux-alert" role="alert">
+                    <i class="fas fa-exclamation-circle me-2"></i>{{ __('contact.form_error') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
+            </div>
             @endif
 
             @yield('content')

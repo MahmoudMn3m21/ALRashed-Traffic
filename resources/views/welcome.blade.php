@@ -31,7 +31,7 @@
             </div>
             <div class="col-lg-5 text-center mt-5 mt-lg-0" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="300">
                 <div class="hero-image-wrapper">
-                    <img src="{{ asset('images/logo.png') }}" alt="Alrashed Traffic"
+                    <img src="{{ asset('images/logo_white.png') }}" alt="Alrashed Traffic"
                         class="img-fluid hero-image">
                 </div>
             </div>
