@@ -31,6 +31,7 @@ return [
     'contact_form_title' => 'Send us a message',
     'name_label' => 'Name',
     'email_placeholder' => 'Email',
+    'phone_label' => 'Phone',
     'subject' => 'Subject',
     'message_label' => 'Message',
     'send_button' => 'Send',

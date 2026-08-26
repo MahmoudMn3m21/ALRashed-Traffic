@@ -264,7 +264,13 @@
                                     <label for="email">{{ __('home.email_placeholder') }}</label>
                                 </div>
                             </div>
-                            <div class="col-12">
+                            <div class="col-md-6">
+                                <div class="form-floating">
+                                    <input type="tel" class="form-control" id="phone" name="phone" placeholder="{{ __('home.phone_label') }}" required>
+                                    <label for="phone">{{ __('home.phone_label') }}</label>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
                                 <div class="form-floating">
                                     <input type="text" class="form-control" id="subject" name="subject" placeholder="{{ __('home.subject') }}" required>
                                     <label for="subject">{{ __('home.subject') }}</label>

@@ -151,7 +151,13 @@
                                         placeholder="{{ __('contact.email') }}" required>
                                 </div>
                             </div>
-                            <div class="col-12">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <input type="tel" name="phone" class="form-control form-control-lg"
+                                        placeholder="{{ __('contact.phone') }}" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <input type="text" name="subject" class="form-control form-control-lg"
                                         placeholder="{{ __('contact.subject') }}" required>

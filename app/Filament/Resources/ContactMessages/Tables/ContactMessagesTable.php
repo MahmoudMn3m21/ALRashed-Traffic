@@ -22,6 +22,10 @@ class ContactMessagesTable
                     ->label('Email')
                     ->searchable()
                     ->sortable(),
+                TextColumn::make('phone')
+                    ->label('Phone')
+                    ->searchable()
+                    ->sortable(),
                 TextColumn::make('message')
                     ->label('Message')
                     ->limit(50)

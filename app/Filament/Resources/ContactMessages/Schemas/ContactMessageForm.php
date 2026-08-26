@@ -19,6 +19,10 @@ class ContactMessageForm
                     ->email()
                     ->required()
                     ->maxLength(255),
+                TextInput::make('phone')
+                    ->tel()
+                    ->required()
+                    ->maxLength(30),
                 Textarea::make('message')
                     ->required()
                     ->columnSpanFull()

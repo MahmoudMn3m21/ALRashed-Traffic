@@ -19,14 +19,20 @@ class ContactController extends Controller
         $request->validate([
             'name'    => 'required|string|max:255',
             'email'   => 'required|email',
+            'phone'   => 'required|string|max:30',
             'message' => 'required|string|max:2000',
         ]);
 
         // Save message to database
-        Contact::create($request->only('name', 'email', 'message'));
-        
+        Contact::create($request->only('name', 'email', 'phone', 'message'));
+
         // Send email to admin
-        Mail::raw($request->message, function ($mail) use ($request) {
+        $body = "Name: {$request->name}\n"
+            . "Email: {$request->email}\n"
+            . "Phone: {$request->phone}\n\n"
+            . $request->message;
+
+        Mail::raw($body, function ($mail) use ($request) {
             $mail->to('mahmoudmn3m007@gmail.com')
                  ->subject('New Contact Message from ' . $request->name)
                  ->replyTo($request->email, $request->name)

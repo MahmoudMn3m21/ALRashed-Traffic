@@ -31,6 +31,7 @@ return [
     'contact_form_title' => 'أرسل لنا رسالة',
     'name_label' => 'الاسم',
     'email_placeholder' => 'البريد الإلكتروني',
+    'phone_label' => 'الهاتف',
     'subject' => 'الموضوع',
     'message_label' => 'الرسالة',
     'send_button' => 'إرسال',
