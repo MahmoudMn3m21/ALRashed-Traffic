@@ -9,7 +9,7 @@
     <div class="hero-overlay"></div>
     <div class="container position-relative">
         <div class="row align-items-center min-vh-100">
-            <div class="col-lg-8 mx-auto text-center text-white">
+            <div class="col-lg-10 col-xl-8 mx-auto text-center text-white">
                 <div class="fade-in">
                     @isset($category)
                     <nav aria-label="breadcrumb" class="mb-3">
@@ -48,8 +48,8 @@
         <div class="row g-4">
             <!-- Sidebar -->
             <div class="col-lg-3 order-2 order-lg-1">
-                <div class="bg-white rounded-4 shadow-sm p-3 p-lg-4">
-                    <h5 class="fw-bold mb-3">{{ __('categories.page_title') }}</h5>
+                <div class="products-sidebar rounded-4 p-3 p-lg-4">
+                    <h5 class="fw-bold mb-3 sidebar-title">{{ __('categories.page_title') }}</h5>
 
                     <div class="accordion accordion-flush" id="categoriesAccordion">
                         @foreach(($mainCategories ?? []) as $main)
@@ -71,7 +71,7 @@
                                     <div class="list-group list-group-flush">
                                         <a href="{{ route('products.by_category', $main) }}"
                                             class="list-group-item list-group-item-action px-0 {{ $isActiveMain && empty($subcategoryId) ? 'fw-bold text-primary' : '' }}">
-                                            ALL ITEMS
+                                            {{ __('products.all_items') }}
                                         </a>
 
                                         @foreach($main->subcategories as $sub)
@@ -95,7 +95,7 @@
                 <div class="row mb-4">
                     <div class="col-12 text-center text-lg-start">
                         <div class="products-info fade-in">
-                            <div class="info-card bg-light rounded-4 shadow-sm p-4 d-inline-block">
+                            <div class="info-card rounded-4 p-4 d-inline-block">
                                 <h3 class="text-primary mb-2">{{ $products->total() }}</h3>
                                 <p class="text-muted mb-0">{{ __('products.total_products') }}</p>
                             </div>
@@ -108,7 +108,7 @@
                 <div class="row g-4" id="productsContainer">
                     @foreach ($products as $index => $product)
                     <div class="col-lg-4 col-md-6 col-sm-12">
-                        <div class="product-card bg-white rounded-4 shadow-lg h-100 overflow-hidden">
+                        <div class="product-card rounded-4 shadow-lg h-100 overflow-hidden">
                             <div class="product-image-wrapper">
                                 @if ($product->image)
                                 <img src="{{ asset('storage/' . $product->image) }}"
@@ -230,18 +230,18 @@
 </section>
 
 <!-- Call to Action Section -->
-<section class="section-padding text-dark" style="background-color: #F7F7F7;">
+<section class="cta-band section-padding">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-8">
                 <div class="fade-in">
-                    <h2 class="mb-3">{{ __('products.cta_title') }}</h2>
-                    <p class="lead mb-0">{{ __('products.cta_subtitle') }}</p>
+                    <h2 class="mb-3 cta-band-title">{{ __('products.cta_title') }}</h2>
+                    <p class="lead mb-0 cta-band-text">{{ __('products.cta_subtitle') }}</p>
                 </div>
             </div>
             <div class="col-lg-4 text-lg-end mt-4 mt-lg-0">
                 <div class="fade-in">
-                    <a href="{{ route('contact.index') }}" class="btn btn-light btn-lg px-5 py-3">
+                    <a href="{{ route('contact.index') }}" class="btn btn-primary btn-lg px-5 py-3">
                         <i class="fas fa-handshake me-2"></i>
                         {{ __('products.start_project') }}
                     </a>

@@ -38,4 +38,7 @@ return [
     'location_title' => 'Our Location',
     'fax_label' => 'Fix / Landline',
     'fax_number' => '02 23879050',
+    'trust_response' => 'Reply within 24 hours',
+    'trust_projects' => '500+ projects delivered',
+    'trust_support' => 'WhatsApp support available',
 ];

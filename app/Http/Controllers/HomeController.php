@@ -14,7 +14,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $products = Product::take(6)->get();
+        $products = Product::query()->orderBy('sort_order')->orderBy('id')->take(6)->get();
         $projects = Project::take(6)->get();
         $clients = Client::take(8)->get();
 

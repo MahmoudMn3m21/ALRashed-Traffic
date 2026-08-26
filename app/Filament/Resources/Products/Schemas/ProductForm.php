@@ -81,6 +81,13 @@ class ProductForm
                 Textarea::make('usages')
                     ->rows(3)
                     ->columnSpanFull(),
+
+                TextInput::make('sort_order')
+                    ->label('Sort Order')
+                    ->numeric()
+                    ->minValue(0)
+                    ->default(0)
+                    ->helperText('Lower numbers appear first.'),
             ]);
     }
 }

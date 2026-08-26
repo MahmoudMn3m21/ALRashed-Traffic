@@ -8,7 +8,7 @@
     <div class="hero-overlay"></div>
     <div class="container position-relative">
         <div class="row align-items-center min-vh-100">
-            <div class="col-lg-8 mx-auto text-center text-white">
+            <div class="col-lg-10 col-xl-8 mx-auto text-center text-white">
                 <div class="fade-in">
                     <h1 class="hero-title mb-4">{{ __('navbar.catalog') }}</h1>
                     <p class="hero-subtitle mb-5">{{ __('catalog.hero_subtitle') }}</p>

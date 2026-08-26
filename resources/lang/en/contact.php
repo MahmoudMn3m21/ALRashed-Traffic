@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'hero_subtitle' => 'Your safety and smooth traffic flow are our priority… Get in touch with Al-Rashed for smart traffic management solutions.',
+    'hero_subtitle' => 'Your safety and smooth traffic flow are our priority. Get in touch with Al‑Rashed for smart traffic solutions.',
     'hero_description' => 'We are here to help you with all your traffic management needs. Contact us today for professional consultation and solutions.',
     'get_in_touch' => 'Get in Touch',
     'contact_subtitle' => 'We are here to help you with all your traffic management needs. Contact us today for professional consultation and solutions.',
@@ -29,4 +29,8 @@ return [
     'cta_subtitle' => 'Contact us now for immediate assistance with your traffic management needs',
     'whatsapp_now' => 'WhatsApp Now',
     'call_now' => 'Call Now',
+    'form_error' => 'Please check the form and try again.',
+    'trust_response' => 'Reply within 24 hours',
+    'trust_projects' => '500+ projects delivered',
+    'trust_support' => 'WhatsApp support available',
 ];

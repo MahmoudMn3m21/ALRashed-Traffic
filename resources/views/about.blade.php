@@ -19,7 +19,7 @@
         
         <div class="container position-relative">
             <div class="row align-items-center min-vh-100">
-                <div class="col-lg-8 mx-auto text-center fade-in">
+                <div class="col-lg-10 col-xl-8 mx-auto text-center fade-in">
                     <h1 class="hero-title mb-4">{{ __('navbar.about') }}</h1>
                     <p class="hero-subtitle mb-4">{{ __('about.hero_subtitle') }}</p>
                     <div class="hero-buttons">

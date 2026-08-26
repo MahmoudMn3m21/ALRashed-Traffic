@@ -54,7 +54,7 @@
     <div class="hero-overlay"></div>
     <div class="container position-relative">
         <div class="row align-items-center min-vh-100">
-            <div class="col-lg-8 mx-auto text-center text-white">
+            <div class="col-lg-10 col-xl-8 mx-auto text-center text-white">
                 <div class="fade-in">
                     <h1 class="hero-title mb-4">{{ __('navbar.products') }}</h1>
                     <p class="hero-subtitle mb-5">{{ __('categories.hero_subtitle') }}</p>
@@ -85,7 +85,7 @@
             <div class="col-md-6 col-sm-12">
                 <a href="{{ route('products.by_category', $category) }}" class="text-decoration-none">
                     <div class="product-card bg-white rounded-4 shadow-lg h-100 overflow-hidden border-0">
-                        <div class="product-image-wrapper position-relative" style="height: 220px; background: #F7F7F7;">
+                        <div class="product-image-wrapper position-relative" style="height: 220px;">
                             @if ($category->image)
                             <img src="{{ asset('storage/categories/' . $category->image) }}" alt="{{ $category->getName() }}" class="w-100 h-100 object-fit-cover">
                             @else
@@ -93,7 +93,7 @@
                             @endif
                         </div>
                         <div class="product-content p-4 text-center">
-                            <h3 class="product-title fw-bold mb-3 text-dark">{{ $category->getName() }}</h3>
+                            <h3 class="product-title fw-bold mb-3">{{ $category->getName() }}</h3>
                             <span class="btn btn-outline-primary btn-sm mt-3">
                                 {{ __('categories.browse_products') }} <i class="fas fa-arrow-{{ app()->getLocale() == 'ar' ? 'left' : 'right' }} ms-1"></i>
                             </span>

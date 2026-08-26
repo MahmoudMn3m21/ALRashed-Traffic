@@ -30,6 +30,7 @@ return [
     'no_products_title' => 'لا توجد منتجات متاحة',
     'no_products_message' => 'نحن نقوم حالياً بتحديث كتالوج منتجاتنا. يرجى المراجعة قريباً!',
     'total_products' => 'إجمالي المنتجات',
+    'all_items' => 'كل العناصر',
     'start_project' => 'ابدأ مشروعك',
     'material' => 'المادة',
     'color' => 'اللون',

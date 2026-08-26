@@ -38,4 +38,7 @@ return [
     'location_title' => 'موقعنا',
     'fax_label' => 'فاكس / أرضي',
     'fax_number' => '23879050 02',
+    'trust_response' => 'رد خلال 24 ساعة',
+    'trust_projects' => 'أكثر من 500 مشروع',
+    'trust_support' => 'دعم عبر واتساب',
 ];

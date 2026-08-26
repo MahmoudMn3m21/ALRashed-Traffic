@@ -22,7 +22,11 @@ class ProductController extends Controller
             $productsQuery->where('subcategory_id', $subcategoryId);
         }
 
-        $products = $productsQuery->paginate(12)->withQueryString();
+        $products = $productsQuery
+            ->orderBy('sort_order')
+            ->orderBy('id')
+            ->paginate(12)
+            ->withQueryString();
 
         return view('products.index', compact('products', 'category', 'mainCategories', 'subcategoryId'));
     }

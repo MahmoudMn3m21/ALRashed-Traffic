@@ -9,7 +9,7 @@
     <div class="hero-overlay"></div>
     <div class="container position-relative">
         <div class="row align-items-center min-vh-100">
-            <div class="col-lg-8 mx-auto text-center text-white">
+            <div class="col-lg-10 col-xl-8 mx-auto text-center text-white">
                 <div class="fade-in">
                     <h1 class="hero-title mb-4">{{ __('navbar.contact') }}</h1>
                     <p class="hero-subtitle mb-5">{{ __('contact.hero_subtitle') }}</p>
@@ -136,6 +136,19 @@
             <!-- Contact Form -->
             <div class="col-lg-6">
                 <div class="contact-form-wrapper fade-in">
+                    <div class="trust-strip">
+                        <span class="trust-chip"><i class="fas fa-clock"></i>{{ __('contact.trust_response') }}</span>
+                        <span class="trust-chip"><i class="fas fa-check-circle"></i>{{ __('contact.trust_projects') }}</span>
+                        <span class="trust-chip"><i class="fab fa-whatsapp"></i>{{ __('contact.trust_support') }}</span>
+                    </div>
+                    <div class="contact-quick-actions mb-3">
+                        <a href="https://wa.me/201000864742" target="_blank" rel="noopener" class="btn btn-outline-light btn-sm">
+                            <i class="fab fa-whatsapp me-1"></i>{{ __('contact.whatsapp_now') }}
+                        </a>
+                        <a href="tel:+201000864742" class="btn btn-outline-light btn-sm">
+                            <i class="fas fa-phone me-1"></i>{{ __('contact.call_now') }}
+                        </a>
+                    </div>
                     <form action="{{ route('contact.send') }}" method="POST" class="contact-form">
                         @csrf
                         <div class="row g-3">

@@ -9,7 +9,7 @@
     <div class="hero-overlay"></div>
     <div class="container position-relative">
         <div class="row align-items-center min-vh-100">
-            <div class="col-lg-8 mx-auto text-center text-white">
+            <div class="col-lg-10 col-xl-8 mx-auto text-center text-white">
                 <div class="fade-in">
                     <h1 class="hero-title mb-4">{{ __('navbar.projects') }}</h1>
                     <p class="hero-subtitle mb-5">{{ __('projects.hero_subtitle') }}</p>
@@ -41,7 +41,7 @@
         <div class="row mb-5">
             <div class="col-12 text-center">
                 <div class="projects-info fade-in">
-                    <div class="info-card bg-light rounded-4 shadow-sm p-4 d-inline-block">
+                    <div class="info-card rounded-4 shadow-sm p-4 d-inline-block">
                         <h3 class="text-primary mb-2">{{ $projects->total() }}</h3>
                         <p class="text-muted mb-0">{{ __('projects.total_projects') }}</p>
                     </div>
@@ -157,18 +157,18 @@
 </section>
 
 <!-- Call to Action Section -->
-<section class="section-padding text-dark" style="background-color: #F7F7F7;">
+<section class="cta-band section-padding">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-8">
                 <div class="fade-in">
-                    <h2 class="mb-3">{{ __('projects.cta_title') }}</h2>
-                    <p class="lead mb-0">{{ __('projects.cta_subtitle') }}</p>
+                    <h2 class="mb-3 cta-band-title">{{ __('projects.cta_title') }}</h2>
+                    <p class="lead mb-0 cta-band-text">{{ __('projects.cta_subtitle') }}</p>
                 </div>
             </div>
             <div class="col-lg-4 text-lg-end mt-4 mt-lg-0">
                 <div class="fade-in">
-                    <a href="{{ route('contact.index') }}" class="btn btn-light btn-lg px-5 py-3">
+                    <a href="{{ route('contact.index') }}" class="btn btn-primary btn-lg px-5 py-3">
                         <i class="fas fa-handshake me-2"></i>
                         {{ __('projects.start_project') }}
                     </a>

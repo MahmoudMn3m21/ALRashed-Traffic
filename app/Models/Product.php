@@ -18,7 +18,12 @@ class Product extends Model
         'material',
         'color',
         'features',
-        'usages'
+        'usages',
+        'sort_order',
+    ];
+
+    protected $casts = [
+        'sort_order' => 'integer',
     ];
 
     public function category()

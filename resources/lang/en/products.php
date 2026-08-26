@@ -26,6 +26,7 @@ return [
     'no_results' => 'No Results Found',
     'try_different_search' => 'Try adjusting your search criteria or browse all products',
     'total_products' => 'Total Products',
+    'all_items' => 'All items',
     'start_project' => 'Start Your Project',
     'material' => 'Material',
     'color' => 'Color',

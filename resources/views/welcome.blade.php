@@ -5,7 +5,6 @@
 @section('content')
 <!-- Hero Section -->
 <section class="hero-section position-relative overflow-hidden">
-    <!-- Animated Background -->
     <div class="hero-bg">
         <div class="gradient-overlay"></div>
         <div class="particles">
@@ -19,15 +18,18 @@
 
     <div class="container position-relative">
         <div class="row align-items-center min-vh-100">
-            <div class="col-lg-6" data-aos="fade-up" data-aos-duration="1000">
+            <div class="col-lg-7" data-aos="fade-up" data-aos-duration="1000">
+                <p class="text-uppercase mb-3" style="letter-spacing: 0.18em; font-size: 0.78rem; color: var(--accent); font-weight: 600;">
+                    Alrashed Traffic
+                </p>
                 <h1 class="hero-title mb-4">{{ __('home.hero_title') }}</h1>
                 <p class="hero-subtitle mb-4">{{ __('home.hero_subtitle') }}</p>
-                <div class="hero-buttons" data-aos="fade-up" data-aos-delay="200">
-                    <a href="#products" class="btn btn-primary btn-lg me-3 smooth-scroll">{{ __('home.view_products') }}</a>
+                <div class="hero-buttons d-flex flex-wrap gap-3" data-aos="fade-up" data-aos-delay="200">
+                    <a href="#products" class="btn btn-primary btn-lg smooth-scroll">{{ __('home.view_products') }}</a>
                     <a href="{{ url('/contact') }}" class="btn btn-outline-light btn-lg">{{ __('navbar.contact') }}</a>
                 </div>
             </div>
-            <div class="col-lg-6 text-center" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="300">
+            <div class="col-lg-5 text-center mt-5 mt-lg-0" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="300">
                 <div class="hero-image-wrapper">
                     <img src="{{ asset('images/logo.png') }}" alt="Alrashed Traffic"
                         class="img-fluid hero-image">
@@ -35,9 +37,8 @@
             </div>
         </div>
 
-        <!-- Scroll Indicator -->
         <div class="scroll-indicator">
-            <a href="#products" class="smooth-scroll">
+            <a href="#products" class="smooth-scroll" aria-label="Scroll to products">
                 <i class="fas fa-chevron-down"></i>
             </a>
         </div>
@@ -248,7 +249,20 @@
             <!-- Contact Form -->
             <div class="col-lg-6">
                 <div class="contact-form-wrapper fade-in" style="animation-delay: 0.5s;">
-                    <h4 class="mb-4">{{ __('home.contact_form_title') }}</h4>
+                    <h4 class="mb-3">{{ __('home.contact_form_title') }}</h4>
+                    <div class="trust-strip">
+                        <span class="trust-chip"><i class="fas fa-clock"></i>{{ __('home.trust_response') }}</span>
+                        <span class="trust-chip"><i class="fas fa-check-circle"></i>{{ __('home.trust_projects') }}</span>
+                        <span class="trust-chip"><i class="fab fa-whatsapp"></i>{{ __('home.trust_support') }}</span>
+                    </div>
+                    <div class="contact-quick-actions mb-3">
+                        <a href="https://wa.me/201000864742" target="_blank" rel="noopener" class="btn btn-outline-light btn-sm">
+                            <i class="fab fa-whatsapp me-1"></i>{{ __('contact.whatsapp_now') }}
+                        </a>
+                        <a href="tel:0223879050" class="btn btn-outline-light btn-sm">
+                            <i class="fas fa-phone me-1"></i>{{ __('contact.call_now') }}
+                        </a>
+                    </div>
                     <form class="contact-form" method="POST" action="{{ route('contact.send') }}">
                         @csrf
                         <div class="row g-3">
