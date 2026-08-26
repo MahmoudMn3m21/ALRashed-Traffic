@@ -591,10 +591,11 @@ img {
     overflow: hidden;
     margin: 0;
     padding: 0;
+    background: var(--bg-elevated);
 }
 
-/* Products: full image (no crop) + white backdrop for mixed source backgrounds */
-.product-image-wrapper {
+/* Product photos only: full image (no crop) + white backdrop */
+.product-image-wrapper:has(.product-image) {
     background: #ffffff;
     display: flex;
     align-items: center;
@@ -607,8 +608,7 @@ img {
 }
 
 .product-image-wrapper .product-image,
-.product-card img.product-image,
-.product-image-wrapper > img {
+.product-card img.product-image {
     display: block !important;
     width: 100% !important;
     height: 100% !important;
@@ -617,6 +617,18 @@ img {
     object-fit: contain !important;
     object-position: center center !important;
     margin: 0 !important;
+    transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Category / non-product images: fill the frame */
+.product-image-wrapper > img:not(.product-image) {
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center center !important;
+    margin: 0 !important;
+    padding: 0 !important;
     transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -636,8 +648,34 @@ img {
     transform: scale(1.04);
 }
 
+.product-card:hover .product-image-wrapper > img:not(.product-image) {
+    transform: scale(1.06);
+}
+
 .project-card:hover .project-image {
     transform: scale(1.08);
+}
+
+/* Category cards: fill frame, no white letterbox */
+.category-image-wrapper {
+    height: 280px !important;
+    padding: 0 !important;
+    background: var(--bg-elevated) !important;
+    display: block !important;
+}
+
+.category-image-wrapper .category-image {
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center center !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.product-card:hover .category-image-wrapper .category-image {
+    transform: scale(1.06);
 }
 
 .product-overlay,
@@ -1426,7 +1464,7 @@ footer .row:last-child p {
     background-size: 200% 100%;
 }
 
-.product-image-wrapper {
+.product-image-wrapper:has(.product-image) {
     background: #ffffff;
 }
 

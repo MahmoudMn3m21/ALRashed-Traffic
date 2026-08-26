@@ -86,10 +86,10 @@
             @foreach ($categories as $category)
             <div class="col-md-6 col-sm-12">
                 <a href="{{ route('products.by_category', $category) }}" class="text-decoration-none">
-                    <div class="product-card bg-white rounded-4 shadow-lg h-100 overflow-hidden border-0">
-                        <div class="product-image-wrapper position-relative" style="height: 220px;">
+                    <div class="product-card rounded-4 shadow-lg h-100 overflow-hidden border-0">
+                        <div class="product-image-wrapper category-image-wrapper position-relative">
                             @if ($category->image)
-                            <img src="{{ asset('storage/categories/' . $category->image) }}" alt="{{ $category->getName() }}" class="w-100 h-100 object-fit-cover">
+                            <img src="{{ asset('storage/categories/' . $category->image) }}" alt="{{ $category->getName() }}" class="category-image">
                             @else
                             <i class="fas fa-folder-open fa-4x text-primary position-absolute top-50 start-50 translate-middle"></i>
                             @endif
@@ -121,6 +121,20 @@
 
 @push('styles')
 <style>
+    .category-image-wrapper {
+        height: 280px;
+        padding: 0 !important;
+        background: var(--bg-elevated) !important;
+    }
+
+    .category-image-wrapper .category-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        display: block;
+    }
+
     .categories-split-section {
         min-height: 100vh;
     }

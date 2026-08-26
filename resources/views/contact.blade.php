@@ -201,7 +201,7 @@
                     <h4 class="mb-4">{{ __('home.location_title') }}</h4>
 
                     <iframe
-                        src="https://www.google.com/maps?q=10%20Al-Gahez%20st,%20Abdallah%20El%20Araby,%20Seventh%20District,%20Nasr%20City,%20Cairo&output=embed"
+                        src="https://www.google.com/maps?q=10%20El%20Gahez%20Street,%20Nasr%20City,%20Cairo,%20Egypt&output=embed"
                         width="100%"
                         height="400"
                         style="border:0;"

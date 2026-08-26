@@ -3,40 +3,40 @@
 @section('title', __('navbar.about'))
 
 @section('content')
-    <!-- Hero Section -->
-    <section class="hero-section position-relative overflow-hidden">
-        <!-- Animated Background -->
-        <div class="hero-bg">
-            <div class="gradient-overlay"></div>
-            <div class="particles">
-                <div class="particle"></div>
-                <div class="particle"></div>
-                <div class="particle"></div>
-                <div class="particle"></div>
-                <div class="particle"></div>
-            </div>
+<!-- Hero Section -->
+<section class="hero-section position-relative overflow-hidden">
+    <!-- Animated Background -->
+    <div class="hero-bg">
+        <div class="gradient-overlay"></div>
+        <div class="particles">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
         </div>
-        
-        <div class="container position-relative">
-            <div class="row align-items-center min-vh-100">
-                <div class="col-lg-10 col-xl-8 mx-auto text-center fade-in">
-                    <h1 class="hero-title mb-4">{{ __('navbar.about') }}</h1>
-                    <p class="hero-subtitle mb-4">{{ __('about.hero_subtitle') }}</p>
-                    <div class="hero-buttons">
-                        <a href="#company-intro" class="btn btn-primary btn-lg me-3 smooth-scroll">{{ __('about.learn_more') }}</a>
-                        <a href="{{ url('/contact') }}" class="btn btn-outline-light btn-lg">{{ __('navbar.contact') }}</a>
-                    </div>
+    </div>
+
+    <div class="container position-relative">
+        <div class="row align-items-center min-vh-100">
+            <div class="col-lg-10 col-xl-8 mx-auto text-center fade-in">
+                <h1 class="hero-title mb-4">{{ __('navbar.about') }}</h1>
+                <p class="hero-subtitle mb-4">{{ __('about.hero_subtitle') }}</p>
+                <div class="hero-buttons">
+                    <a href="#company-intro" class="btn btn-primary btn-lg me-3 smooth-scroll">{{ __('about.learn_more') }}</a>
+                    <a href="{{ url('/contact') }}" class="btn btn-outline-light btn-lg">{{ __('navbar.contact') }}</a>
                 </div>
             </div>
-            
-            <!-- Scroll Indicator -->
-            <div class="scroll-indicator">
-                <a href="#company-intro" class="smooth-scroll">
-                    <i class="fas fa-chevron-down"></i>
-                </a>
-            </div>
         </div>
-    </section>
+
+        <!-- Scroll Indicator -->
+        <div class="scroll-indicator">
+            <a href="#company-intro" class="smooth-scroll">
+                <i class="fas fa-chevron-down"></i>
+            </a>
+        </div>
+    </div>
+</section>
 
 <!-- Company Introduction -->
 <section id="company-intro" class="section-padding">
@@ -77,7 +77,7 @@
             <div class="col-lg-6">
                 <div class="slide-in-right">
                     <div class="about-image-wrapper position-relative">
-                        <img src="{{ asset('images/logo.png') }}" alt="{{ __('about.company_image_alt') }}" class="img-fluid rounded-4 shadow-lg">
+                        <img src="{{ asset('images/logo_white.png') }}" alt="{{ __('about.company_image_alt') }}" class="img-fluid rounded-4 shadow-lg">
                     </div>
                 </div>
             </div>
@@ -93,7 +93,7 @@
             <div class="title-divider mx-auto mb-4"></div>
             <p class="section-subtitle mb-5">{{ __('about.mission_vision_subtitle') }}</p>
         </div>
-        
+
         <div class="row g-5">
             <div class="col-lg-6" data-aos="fade-right" data-aos-duration="800">
                 <div class="mission-vision-card bg-white rounded-4 shadow-lg p-5 h-100">
@@ -129,7 +129,7 @@
             <div class="title-divider mx-auto mb-4"></div>
             <p class="section-subtitle mb-5">{{ __('about.services_subtitle') }}</p>
         </div>
-        
+
         <div class="row g-4">
             <div class="col-lg-3 col-md-6 col-sm-12">
                 <div class="service-card bg-light rounded-4 shadow-sm p-4 h-100 text-center">
