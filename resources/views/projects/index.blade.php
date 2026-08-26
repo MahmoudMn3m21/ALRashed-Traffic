@@ -53,9 +53,9 @@
         @if ($projects->count() > 0)
         <div class="row g-4" id="projectsContainer">
             @foreach ($projects as $index => $project)
-            <div class="col-lg-4 col-md-4 col-sm-12">
+            <div class="col-lg-4 col-md-6 col-sm-12">
                 <div class="project-card bg-white rounded-4 shadow-lg h-100 overflow-hidden">
-                    <div class="project-image-wrapper text-center">
+                    <div class="project-image-wrapper">
                         @if ($project->image)
                         <img src="{{ asset('storage/projects/' . $project->image) }}"
                             alt="{{ $project->getTitle() }}" class="project-image">

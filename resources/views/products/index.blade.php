@@ -107,9 +107,9 @@
                 @if ($products->count() > 0)
                 <div class="row g-4" id="productsContainer">
                     @foreach ($products as $index => $product)
-                    <div class="col-lg-4 col-md-4 col-sm-12">
+                    <div class="col-lg-4 col-md-6 col-sm-12">
                         <div class="product-card bg-white rounded-4 shadow-lg h-100 overflow-hidden">
-                            <div class="product-image-wrapper text-center">
+                            <div class="product-image-wrapper">
                                 @if ($product->image)
                                 <img src="{{ asset('storage/' . $product->image) }}"
                                     alt="{{ $product->getName() }}" class="product-image">

@@ -60,7 +60,7 @@
             @foreach ($products as $index => $product)
             <div class="col-lg-4 col-md-6 mb-4">
                 <div class="product-card h-100 text-center" data-aos="fade-up" data-aos-duration="600" data-aos-delay="{{ $index * 100 }}">
-                    <div class="product-image-wrapper text-center">
+                    <div class="product-image-wrapper">
                         <img src="{{ $product->image ? asset('storage/' . $product->image) : asset('images/placeholder.jpg') }}"
                             class="product-image" alt="{{ $product->getName() }}">
                         <div class="product-overlay text-center">
@@ -150,7 +150,7 @@
             @foreach ($projects as $index => $project)
             <div class="col-lg-4 col-md-6 mb-4">
                 <div class="project-card fade-in" style="animation-delay: {{ $index * 0.1 }}s;">
-                    <div class="project-image-wrapper text-center">
+                    <div class="project-image-wrapper">
                         <img src="{{ $project->image ? asset('storage/projects/' . $project->image) : asset('images/placeholder.jpg') }}"
                             class="project-image" alt="{{ $project->getTitle() }}">
                         <div class="project-overlay">
