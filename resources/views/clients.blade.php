@@ -199,7 +199,7 @@
                                 <div class="col-6 col-md-6">
 
                                     <div class="stat-item">
-                                        <div class="stat-number">15+</div>
+                                        <div class="stat-number">25+</div>
                                         <div class="stat-label">{{ __('clients.years_experience') }}</div>
                                     </div>
 

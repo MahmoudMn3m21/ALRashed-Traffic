@@ -58,7 +58,7 @@
                                 <div class="stat-icon mb-3">
                                     <i class="fas fa-calendar-alt text-primary fs-2"></i>
                                 </div>
-                                <h3 class="stat-number text-primary display-5 fw-bold mb-2">15+</h3>
+                                <h3 class="stat-number text-primary display-5 fw-bold mb-2">25+</h3>
                                 <p class="stat-label text-muted fw-semibold mb-0">{{ __('about.years_experience') }}</p>
                             </div>
                         </div>
