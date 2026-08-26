@@ -94,9 +94,6 @@
                         </div>
                         <div class="product-content p-4 text-center">
                             <h3 class="product-title fw-bold mb-3 text-dark">{{ $category->getName() }}</h3>
-                            <p class="text-muted mb-0">
-                                {{ __('categories.products_count', ['count' => $category->products_count]) }}
-                            </p>
                             <span class="btn btn-outline-primary btn-sm mt-3">
                                 {{ __('categories.browse_products') }} <i class="fas fa-arrow-{{ app()->getLocale() == 'ar' ? 'left' : 'right' }} ms-1"></i>
                             </span>

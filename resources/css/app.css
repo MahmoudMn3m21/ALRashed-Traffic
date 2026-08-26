@@ -1935,7 +1935,7 @@ footer .row:last-child p {
 /* Form labels */
 label,
 .form-label,
-.form-floating > label {
+.form-floating>label {
     color: var(--dark-color);
     font-weight: 500;
 }
@@ -1980,3 +1980,102 @@ label,
     border: 1px solid rgba(92, 99, 110, 0.25);
 }
 
+/* =========================================
+   Centered image + text cards (system-wide)
+   ========================================= */
+.product-card,
+.project-card,
+.client-card,
+.service-card,
+.catalog-card,
+.card.h-100 {
+    text-align: center;
+}
+
+.product-image-wrapper,
+.project-image-wrapper {
+    position: relative;
+    height: 250px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.client-logo-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.product-image-wrapper .product-image,
+.project-image-wrapper .project-image,
+.product-card img.product-image,
+.project-card img.project-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    object-fit: cover;
+    object-position: center center;
+}
+
+.product-content,
+.project-content,
+.card-body {
+    text-align: center;
+    align-items: center;
+}
+
+.product-content,
+.project-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.product-title,
+.product-subtitle,
+.product-description,
+.project-title,
+.project-subtitle,
+.project-description,
+.client-name,
+.card-title {
+    text-align: center;
+    width: 100%;
+}
+
+.project-meta,
+.product-features,
+.product-footer,
+.overlay-actions {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 100%;
+    text-align: center;
+}
+
+.project-meta {
+    margin-top: 0;
+    border-top: none;
+    padding-top: 0;
+}
+
+.project-category {
+    justify-content: center;
+}
+
+.view-details-btn {
+    margin-left: auto;
+    margin-right: auto;
+}

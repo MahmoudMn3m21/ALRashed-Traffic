@@ -120,18 +120,6 @@
                                 @if ($project->getDescription())
                                 <p class="mb-3">{{ $project->getDescription() }}</p>
                                 @endif
-                                <div class="row g-3">
-                                    <div class="col-md-6">
-                                        <strong>{{ __('projects.created_date') }}:</strong><br>
-                                        <span
-                                            class="text-muted">{{ $project->created_at->format('F Y') }}</span>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <strong>{{ __('projects.last_updated') }}:</strong><br>
-                                        <span
-                                            class="text-muted">{{ $project->updated_at->format('F Y') }}</span>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                         <div class="modal-footer border-0">
