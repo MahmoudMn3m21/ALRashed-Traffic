@@ -85,7 +85,7 @@
             <div class="col-md-6 col-sm-12">
                 <a href="{{ route('products.by_category', $category) }}" class="text-decoration-none">
                     <div class="product-card bg-white rounded-4 shadow-lg h-100 overflow-hidden border-0">
-                        <div class="product-image-wrapper text-center position-relative" style="height: 220px; background: #f8f9fa;">
+                        <div class="product-image-wrapper text-center position-relative" style="height: 220px; background: #F7F7F7;">
                             @if ($category->image)
                             <img src="{{ asset('storage/categories/' . $category->image) }}" alt="{{ $category->getName() }}" class="w-100 h-100 object-fit-cover">
                             @else

@@ -76,8 +76,8 @@ function initTooltips() {
     tooltip.className = 'custom-tooltip';
     tooltip.style.cssText = `
         position: absolute;
-        background: rgba(0, 0, 0, 0.9);
-        color: white;
+        background: #393E46;
+        color: #F7F7F7;
         padding: 8px 12px;
         border-radius: 6px;
         font-size: 14px;
@@ -147,8 +147,9 @@ function initScrollToTop() {
         right: 30px;
         width: 50px;
         height: 50px;
-        background: var(--primary-color, #fbb116);
-        color: white;
+        background: var(--primary-color, #F8B500);
+        color: #393E46;
+        font-weight: 600;
         border: none;
         border-radius: 50%;
         cursor: pointer;
@@ -156,7 +157,7 @@ function initScrollToTop() {
         opacity: 0;
         visibility: hidden;
         transition: all 0.3s ease;
-        box-shadow: 0 4px 12px rgba(251, 177, 22, 0.4);
+        box-shadow: 0 4px 12px rgba(248, 181, 0, 0.4);
     `;
 
     scrollBtn.addEventListener('click', () => {
@@ -354,7 +355,7 @@ enhancementStyles.textContent = `
         top: 0;
         left: 0;
         height: 4px;
-        background: linear-gradient(90deg, var(--primary-color, #fbb116), var(--secondary-color, #fdcf6a));
+        background: linear-gradient(90deg, var(--primary-color, #F8B500), var(--slate-color, #5C636E));
         width: 0%;
         z-index: 99999;
         transition: width 0.3s ease, opacity 0.3s ease;
@@ -366,11 +367,11 @@ enhancementStyles.textContent = `
         top: 0;
         left: 0;
         height: 3px;
-        background: linear-gradient(90deg, var(--primary-color, #fbb116), var(--secondary-color, #fdcf6a), var(--accent-color, #253861));
+        background: linear-gradient(90deg, var(--primary-color, #F8B500), var(--slate-color, #5C636E));
         width: 0%;
         z-index: 1031;
         transition: width 0.1s ease;
-        box-shadow: 0 2px 4px rgba(251, 177, 22, 0.4);
+        box-shadow: 0 2px 4px rgba(248, 181, 0, 0.4);
     }
 
     /* Sticky Contact Button */
@@ -380,8 +381,8 @@ enhancementStyles.textContent = `
         left: 30px;
         width: 60px;
         height: 60px;
-        background: #25d366;
-        color: white;
+        background: #F8B500;
+        color: #393E46;
         border-radius: 50%;
         display: flex;
         align-items: center;
@@ -389,23 +390,23 @@ enhancementStyles.textContent = `
         text-decoration: none;
         font-size: 24px;
         z-index: 1000;
-        box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+        box-shadow: 0 4px 12px rgba(248, 181, 0, 0.4);
         transition: all 0.3s ease;
         animation: pulse-contact 2s infinite;
     }
 
     .sticky-contact-btn:hover {
         transform: scale(1.1);
-        background: #128c7e;
-        color: white;
+        background: #393E46;
+        color: #F8B500;
         text-decoration: none;
-        box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
+        box-shadow: 0 6px 20px rgba(57, 62, 70, 0.45);
     }
 
     @keyframes pulse-contact {
-        0% { box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4); }
-        50% { box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4), 0 0 0 10px rgba(37, 211, 102, 0.1); }
-        100% { box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4); }
+        0% { box-shadow: 0 4px 12px rgba(248, 181, 0, 0.4); }
+        50% { box-shadow: 0 4px 12px rgba(248, 181, 0, 0.4), 0 0 0 10px rgba(248, 181, 0, 0.12); }
+        100% { box-shadow: 0 4px 12px rgba(248, 181, 0, 0.4); }
     }
 
     /* CTA Highlight Animation */
@@ -417,11 +418,11 @@ enhancementStyles.textContent = `
 
     @keyframes cta-glow {
         0% {
-            box-shadow: 0 4px 12px rgba(37, 56, 97, 0.35);
+            box-shadow: 0 4px 12px rgba(57, 62, 70, 0.35);
             transform: translateY(-2px);
         }
         100% {
-            box-shadow: 0 8px 25px rgba(30, 64, 175, 0.6);
+            box-shadow: 0 8px 25px rgba(248, 181, 0, 0.55);
             transform: translateY(-4px);
         }
     }
@@ -444,36 +445,36 @@ enhancementStyles.textContent = `
 
     /* Navbar scroll effect */
     .navbar-scrolled {
-        background: rgba(255, 255, 255, 0.95) !important;
+        background: rgba(247, 247, 247, 0.95) !important;
         backdrop-filter: blur(10px);
-        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 2px 20px rgba(57, 62, 70, 0.15);
     }
 
     .navbar-scrolled .navbar-nav .nav-link {
-        color: #333 !important;
+        color: #393E46 !important;
     }
 
     .navbar-scrolled .navbar-nav .nav-link:hover {
-        color: #007bff !important;
+        color: #F8B500 !important;
     }
 
     .navbar-scrolled .navbar-nav .nav-link.active {
-        color: #007bff !important;
+        color: #F8B500 !important;
     }
 
     .navbar-scrolled .navbar-brand {
-        color: #333 !important;
+        color: #393E46 !important;
     }
 
     /* Scroll to top button hover */
     .scroll-to-top:hover {
         transform: translateY(-3px);
-        box-shadow: 0 6px 20px rgba(0, 123, 255, 0.4);
+        box-shadow: 0 6px 20px rgba(248, 181, 0, 0.4);
     }
 
     /* Form floating labels */
     .form-floating.focused label {
-        color: var(--primary-color, #fbb116);
+        color: var(--primary-color, #F8B500);
     }
 
     /* Smooth transitions */

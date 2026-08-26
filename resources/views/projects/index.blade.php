@@ -169,7 +169,7 @@
 </section>
 
 <!-- Call to Action Section -->
-<section class="section-padding text-dark" style="background-color: #f5f5f5ff;">
+<section class="section-padding text-dark" style="background-color: #F7F7F7;">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-8">
