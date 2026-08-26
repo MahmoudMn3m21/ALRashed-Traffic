@@ -381,8 +381,7 @@ img {
     animation: bounce 2s infinite;
 }
 
-.scroll-indicator a,
-.scroll-arrow {
+.scroll-indicator a {
     display: flex;
     width: 44px;
     height: 44px;
@@ -391,9 +390,16 @@ img {
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.06);
     border: 1px solid var(--border);
-    color: var(--text);
+    color: #fff;
+    text-decoration: none;
     backdrop-filter: blur(8px);
     transition: all 0.3s ease;
+}
+
+.scroll-indicator a i {
+    font-size: 1rem;
+    line-height: 1;
+    color: inherit;
 }
 
 .scroll-indicator a:hover {

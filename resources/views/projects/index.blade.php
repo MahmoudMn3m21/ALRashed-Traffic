@@ -24,7 +24,9 @@
 
     <!-- Scroll Indicator -->
     <div class="scroll-indicator">
-        <div class="scroll-arrow"></div>
+        <a href="#projects-showcase" class="smooth-scroll" aria-label="Scroll down">
+            <i class="fas fa-chevron-down"></i>
+        </a>
     </div>
 </section>
 

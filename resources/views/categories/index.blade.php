@@ -67,7 +67,9 @@
         </div>
     </div>
     <div class="scroll-indicator">
-        <div class="scroll-arrow"></div>
+        <a href="#categories-showcase" class="smooth-scroll" aria-label="Scroll down">
+            <i class="fas fa-chevron-down"></i>
+        </a>
     </div>
 </section>
 
