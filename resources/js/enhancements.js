@@ -169,7 +169,7 @@ function initScrollToTop() {
         right: 30px;
         width: 50px;
         height: 50px;
-        background: var(--accent, #8b9cff);
+        background: var(--accent, #FFC923);
         color: #07080b;
         font-weight: 600;
         border: none;
@@ -179,7 +179,7 @@ function initScrollToTop() {
         opacity: 0;
         visibility: hidden;
         transition: all 0.3s ease;
-        box-shadow: 0 8px 28px rgba(139, 156, 255, 0.35);
+        box-shadow: 0 8px 28px rgba(255, 201, 35, 0.35);
     `;
 
     scrollBtn.addEventListener('click', () => {
@@ -381,11 +381,11 @@ enhancementStyles.textContent = `
         top: 0;
         left: 0;
         height: 3px;
-        background: linear-gradient(90deg, #8b9cff, #c4b5fd);
+        background: linear-gradient(90deg, #FFC923, #FFE066);
         width: 0%;
         z-index: 99999;
         transition: width 0.3s ease, opacity 0.3s ease;
-        box-shadow: 0 0 12px rgba(139, 156, 255, 0.45);
+        box-shadow: 0 0 12px rgba(255, 201, 35, 0.45);
     }
 
     #scroll-progress-bar {
@@ -393,11 +393,11 @@ enhancementStyles.textContent = `
         top: 0;
         left: 0;
         height: 3px;
-        background: linear-gradient(90deg, #8b9cff, #c4b5fd);
+        background: linear-gradient(90deg, #FFC923, #FFE066);
         width: 0%;
         z-index: 1031;
         transition: width 0.1s ease;
-        box-shadow: 0 0 12px rgba(139, 156, 255, 0.45);
+        box-shadow: 0 0 12px rgba(255, 201, 35, 0.45);
     }
 
     .sticky-contact-btn {
@@ -441,8 +441,8 @@ enhancementStyles.textContent = `
     }
 
     @keyframes cta-glow {
-        0% { box-shadow: 0 8px 24px rgba(139, 156, 255, 0.35); transform: translateY(-2px); }
-        100% { box-shadow: 0 14px 40px rgba(196, 181, 253, 0.55); transform: translateY(-4px); }
+        0% { box-shadow: 0 8px 24px rgba(255, 201, 35, 0.35); transform: translateY(-2px); }
+        100% { box-shadow: 0 14px 40px rgba(255, 224, 102, 0.55); transform: translateY(-4px); }
     }
 
     .cta-highlight::before {
@@ -484,11 +484,11 @@ enhancementStyles.textContent = `
 
     .scroll-to-top:hover {
         transform: translateY(-3px);
-        box-shadow: 0 12px 32px rgba(139, 156, 255, 0.5);
+        box-shadow: 0 12px 32px rgba(255, 201, 35, 0.5);
     }
 
     .form-floating.focused label {
-        color: var(--accent, #8b9cff);
+        color: var(--accent, #FFC923);
     }
 
     @media (max-width: 768px) {

@@ -4,7 +4,7 @@
 
 @section('content')
 <!-- Product Hero Section -->
-<section class="py-5" style="background-color: #F8B500; color: #393E46;">
+<section class="py-5" style="background-color: #FFC923; color: #07080b;">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-12 text-center">

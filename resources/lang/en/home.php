@@ -24,7 +24,7 @@ return [
     'contact_title' => 'Contact Us',
     'contact_subtitle' => 'We are happy to receive your inquiries and requests',
     'address_label' => 'Address',
-    'address_text' => '10 Al-Jahiz Street, from Aviation, Seventh District, Nasr City, Cairo',
+    'address_text' => '10 Al-Gahez st, from Abdallah El Araby, Seventh District, Nasr City, Cairo',
     'email_label' => 'Email',
     'whatsapp_label' => 'WhatsApp',
     'phone_number' => '+20 100 086 4742',

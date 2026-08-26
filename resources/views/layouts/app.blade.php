@@ -182,7 +182,7 @@
                             </div>
                             <div class="d-flex align-items-center mb-3">
                                 <i class="fas fa-envelope me-3"></i>
-                                <a href="mailto:info@alrashed-traffic.com">info@alrashed-traffic.com</a>
+                                <a href="mailto:{{ __('contact.email_address') }}">{{ __('contact.email_address') }}</a>
                             </div>
                             <div class="d-flex align-items-center mb-3">
                                 <i class="fab fa-whatsapp me-3"></i>

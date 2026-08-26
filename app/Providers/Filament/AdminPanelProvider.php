@@ -32,7 +32,7 @@ class AdminPanelProvider extends PanelProvider
             ->authGuard('web')
             ->authPasswordBroker('users')
             ->colors([
-                'primary' => Color::hex('#8b9cff'),
+                'primary' => Color::hex('#FFC923'),
             ])
             ->darkMode(true)
             ->defaultThemeMode(ThemeMode::Dark)

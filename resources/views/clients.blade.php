@@ -4,63 +4,33 @@
 
 @section('content')
 
-    <!-- CHANGE: Added CSS to align cards -->
     <style>
         .client-card {
             height: 100%;
-            /* CHANGE */
             display: flex;
-            /* CHANGE */
             flex-direction: column;
-            /* CHANGE */
             justify-content: space-between;
-            /* CHANGE */
-        }
-
-        .client-logo-container {
-            height: 140px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 10px;
-        }
-
-        .client-logo {
-            width: 100%;
-            /* CHANGE: full width */
-            height: 100%;
-            /* CHANGE */
-            object-fit: contain;
         }
 
         .client-info {
             flex: 1;
-            /* CHANGE */
             display: flex;
-            /* CHANGE */
             flex-direction: column;
-            /* CHANGE */
             justify-content: flex-start;
-            /* CHANGE */
             text-align: center;
-            /* CHANGE */
             padding: 10px 15px 20px;
-            /* CHANGE */
         }
 
         .client-name {
             min-height: 48px;
-            /* CHANGE */
         }
 
         .client-description {
             min-height: 50px;
-            /* CHANGE */
         }
 
         .client-info .btn {
             margin-top: auto;
-            /* CHANGE */
         }
     </style>
 

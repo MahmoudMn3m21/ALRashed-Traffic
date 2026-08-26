@@ -83,12 +83,6 @@
                         </div>
                     </div>
                     <div class="project-content p-4">
-                        <div class="project-meta mb-3">
-                            <span class="project-date badge bg-light text-dark">
-                                <i class="fas fa-calendar me-1"></i>
-                                {{ $project->created_at->format('Y') }}
-                            </span>
-                        </div>
                         <h3 class="project-title fw-bold mb-3">{{ $project->getTitle() }}</h3>
                         @if ($project->getAlternateTitle())
                         <p class="project-subtitle text-muted mb-3">{{ $project->getAlternateTitle() }}</p>
