@@ -50,26 +50,65 @@ Route::get('/lang/{locale}', function ($locale) {
 })->name('lang.switch');
 
 Route::get('/mail-test', function () {
+    try {
+        $to = config('mail.contact_to', 'info@alrashed-safety.com');
 
-    Mail::raw('Laravel mail test is working 🎉', function ($mail) {
-        $mail->to('mahmoudmn3m007@gmail.com')
-            ->subject('Laravel SMTP Test');
-    });
+        Mail::raw(
+            'SMTP test from Laravel at '.now()->toDateTimeString(),
+            function ($mail) use ($to) {
+                $mail->to($to)->subject('Alrashed Safety SMTP Test');
+            }
+        );
 
-    return 'Mail sent successfully';
+        return response(
+            'OK: mail accepted by SMTP for '.$to
+            .' (host='.config('mail.mailers.smtp.host')
+            .', port='.config('mail.mailers.smtp.port').'). Check Inbox and Junk.',
+            200,
+            ['Content-Type' => 'text/plain; charset=UTF-8']
+        );
+    } catch (\Throwable $e) {
+        return response(
+            'FAIL: '.$e->getMessage()
+            ."\nhost=".config('mail.mailers.smtp.host')
+            ."\nport=".config('mail.mailers.smtp.port')
+            ."\nuser=".config('mail.mailers.smtp.username')
+            ."\nfrom=".config('mail.from.address'),
+            200,
+            ['Content-Type' => 'text/plain; charset=UTF-8']
+        );
+    }
 });
 
 Route::get('/clear-cache', function () {
-    $hotFile = public_path('hot');
-    if (is_file($hotFile)) {
-        @unlink($hotFile);
+    $messages = [];
+
+    try {
+        $hotFile = public_path('hot');
+        if (is_file($hotFile)) {
+            @unlink($hotFile);
+            $messages[] = 'Removed public/hot';
+        }
+
+        Artisan::call('optimize:clear');
+        $messages[] = 'optimize:clear OK';
+
+        Artisan::call('config:clear');
+        $messages[] = 'config:clear OK';
+
+        // Do not run view:cache here — Filament views break it on shared hosting.
+        Artisan::call('view:clear');
+        $messages[] = 'view:clear OK';
+
+        Artisan::call('cache:clear');
+        $messages[] = 'cache:clear OK';
+    } catch (\Throwable $e) {
+        $messages[] = 'ERROR: '.$e->getMessage();
     }
 
-    Artisan::call('optimize:clear');
-    Artisan::call('config:cache');
-    Artisan::call('view:cache');
-
-    return 'Application cache cleared and rebuilt. Removed public/hot if present.';
+    return response(implode("\n", $messages), 200, [
+        'Content-Type' => 'text/plain; charset=UTF-8',
+    ]);
 });
 
 Route::get('/storage-link', function () {
