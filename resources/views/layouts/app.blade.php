@@ -7,10 +7,108 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'ALRASHED INSTITUTION') }} - @yield('title', 'Home')</title>
-    <link rel="icon" type="image/png" href="{{ asset('images/favicon.png') }}">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="{{ asset('images/logo_white.png') }}">
+
+    {{-- Prevent white unstyled flash before Vite CSS arrives --}}
+    <style>
+        html,
+        body {
+            margin: 0;
+            background: #07080b;
+            color: #f4f5f7;
+            font-family: Outfit, Cairo, system-ui, sans-serif;
+        }
+
+        body.theme-dark {
+            background: #07080b;
+            color: #f4f5f7;
+        }
+
+        .skip-link {
+            position: absolute;
+            left: -9999px;
+        }
+
+        .navbar {
+            min-height: 76px;
+        }
+
+        #main-content {
+            padding-top: 76px;
+        }
+
+        .toast-stack {
+            position: fixed;
+            top: 96px;
+            inset-inline-end: 20px;
+            z-index: 1080;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            width: min(420px, calc(100vw - 32px));
+            pointer-events: none;
+        }
+
+        .ux-toast {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+            padding: 0.95rem 1rem;
+            border-radius: 10px;
+            color: #f4f5f7;
+            box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+            pointer-events: auto;
+        }
+
+        .ux-toast i {
+            margin-top: 0.15rem;
+        }
+
+        .ux-toast span {
+            flex: 1;
+            line-height: 1.45;
+        }
+
+        .ux-toast-success {
+            border: 1px solid rgba(52, 211, 153, 0.45);
+            background: rgba(16, 32, 28, 0.96);
+        }
+
+        .ux-toast-success i {
+            color: #34d399;
+        }
+
+        .ux-toast-error {
+            border: 1px solid rgba(248, 113, 113, 0.45);
+            background: rgba(40, 18, 18, 0.96);
+        }
+
+        .ux-toast-error i {
+            color: #f87171;
+        }
+
+        .ux-toast-close {
+            background: transparent;
+            border: 0;
+            color: #9aa0ad;
+            font-size: 1.25rem;
+            line-height: 1;
+            padding: 0;
+            cursor: pointer;
+        }
+    </style>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    </noscript>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" media="print" onload="this.media='all'">
+
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
     @stack('styles')
 </head>
 
@@ -119,20 +217,22 @@
         </nav>
 
         <main id="main-content" class="flex-grow-1" style="padding-top: 76px;" tabindex="-1">
-            @if (session('success'))
-            <div class="container mt-3">
-                <div class="alert alert-success alert-dismissible fade show ux-alert" role="alert">
-                    <i class="fas fa-check-circle me-2"></i>{{ session('success') }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            @if (session('success') || (isset($errors) && $errors->any()))
+            <div class="toast-stack" aria-live="polite" aria-atomic="true">
+                @if (session('success'))
+                <div class="ux-toast ux-toast-success" role="status">
+                    <i class="fas fa-check-circle"></i>
+                    <span>{{ session('success') }}</span>
+                    <button type="button" class="ux-toast-close" aria-label="Close">&times;</button>
                 </div>
-            </div>
-            @endif
-            @if ($errors->any())
-            <div class="container mt-3">
-                <div class="alert alert-danger alert-dismissible fade show ux-alert" role="alert">
-                    <i class="fas fa-exclamation-circle me-2"></i>{{ __('contact.form_error') }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                @endif
+                @if (isset($errors) && $errors->any())
+                <div class="ux-toast ux-toast-error" role="alert">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <span>{{ __('contact.form_error') }}</span>
+                    <button type="button" class="ux-toast-close" aria-label="Close">&times;</button>
                 </div>
+                @endif
             </div>
             @endif
 
@@ -209,9 +309,24 @@
         </footer>
     </div>
 
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
     @stack('scripts')
+    @if (session('success') || (isset($errors) && $errors->any()))
+    <script>
+        document.querySelectorAll('.ux-toast').forEach(function(toast) {
+            var hide = function() {
+                toast.style.opacity = '0';
+                toast.style.transition = 'opacity .25s ease';
+                setTimeout(function() {
+                    toast.remove();
+                }, 250);
+            };
+            var btn = toast.querySelector('.ux-toast-close');
+            if (btn) btn.addEventListener('click', hide);
+            setTimeout(hide, 7000);
+        });
+    </script>
+    @endif
 </body>
 
 </html>

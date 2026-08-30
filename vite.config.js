@@ -7,28 +7,13 @@ export default defineConfig({
             input: [
                 'resources/css/app.css',
                 'resources/js/app.js',
-                'resources/js/enhancements.js'
             ],
             refresh: true,
         }),
     ],
-    css: {
-        postcss: {
-            plugins: [],
-        },
-    },
     build: {
-        outDir: 'public/build',
-        manifest: true,
-        rollupOptions: {
-            output: {
-                manualChunks: undefined,
-            },
-        },
+        // Laravel looks for public/build/manifest.json (not .vite/manifest.json)
+        manifest: 'manifest.json',
+        emptyOutDir: true,
     },
-    server: {
-         hmr: {
-             host: 'localhost',
-         },
-     },
 });

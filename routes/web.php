@@ -60,12 +60,16 @@ Route::get('/mail-test', function () {
 });
 
 Route::get('/clear-cache', function () {
-    Artisan::call('cache:clear');
-    Artisan::call('config:clear');
-    Artisan::call('config:cache');
-    Artisan::call('view:clear');
+    $hotFile = public_path('hot');
+    if (is_file($hotFile)) {
+        @unlink($hotFile);
+    }
 
-    return "Application cache cleared successfully.";
+    Artisan::call('optimize:clear');
+    Artisan::call('config:cache');
+    Artisan::call('view:cache');
+
+    return 'Application cache cleared and rebuilt. Removed public/hot if present.';
 });
 
 Route::get('/storage-link', function () {

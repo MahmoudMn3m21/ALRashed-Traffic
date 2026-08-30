@@ -30,6 +30,7 @@ return [
     'whatsapp_now' => 'WhatsApp Now',
     'call_now' => 'Call Now',
     'form_error' => 'Please check the form and try again.',
+    'form_success' => 'Your message has been sent successfully. We will get back to you soon.',
     'trust_response' => 'Reply within 24 hours',
     'trust_projects' => '500+ projects delivered',
     'trust_support' => 'WhatsApp support available',
