@@ -164,8 +164,49 @@ img {
 }
 
 .navbar-toggler {
-    border: 1px solid var(--border);
-    padding: 0.35rem 0.55rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+    min-width: 44px;
+    min-height: 40px;
+    padding: 0.4rem 0.7rem;
+    border: 1.5px solid var(--accent) !important;
+    border-radius: var(--radius-sm);
+    background: var(--accent-soft);
+    color: var(--accent) !important;
+    box-shadow: 0 0 0 1px rgba(255, 201, 35, 0.15);
+}
+
+.navbar-toggler i {
+    font-size: 1.15rem;
+    line-height: 1;
+    color: var(--accent);
+}
+
+.navbar-toggler-label {
+    font-size: 0.78rem;
+    font-weight: 650;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    color: var(--accent);
+}
+
+.navbar-toggler:hover,
+.navbar-toggler:focus,
+.navbar-toggler[aria-expanded="true"] {
+    background: var(--accent);
+    color: #07080b !important;
+    box-shadow: 0 6px 18px var(--glow);
+}
+
+.navbar-toggler:hover i,
+.navbar-toggler:focus i,
+.navbar-toggler[aria-expanded="true"] i,
+.navbar-toggler:hover .navbar-toggler-label,
+.navbar-toggler:focus .navbar-toggler-label,
+.navbar-toggler[aria-expanded="true"] .navbar-toggler-label {
+    color: #07080b;
 }
 
 .navbar-toggler:focus {

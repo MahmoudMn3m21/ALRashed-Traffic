@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'ALRASHED INSTITUTION') }} - @yield('title', 'Home')</title>
+    <title>{{ config('app.name', 'Al Rashed Institution') }} - @yield('title', 'Home')</title>
     <link rel="icon" type="image/png" href="{{ asset('images/logo_white.png') }}">
 
     {{-- Prevent white unstyled flash before Vite CSS arrives --}}
@@ -130,7 +130,8 @@
                     </a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                         aria-controls="navbarNav" aria-expanded="false" aria-label="{{ __('navbar.toggle_menu') }}">
-                        <span class="navbar-toggler-icon"></span>
+                        <i class="fas fa-bars" aria-hidden="true"></i>
+                        <span class="navbar-toggler-label">{{ __('navbar.menu') }}</span>
                     </button>
                 </div>
 

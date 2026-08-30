@@ -13,5 +13,6 @@ return [
     'get_quote' => 'Get a Quote',
     'skip_to_content' => 'Skip to content',
     'toggle_menu' => 'Toggle navigation',
+    'menu' => 'Menu',
     'language_switcher' => 'Language Switcher',
 ];

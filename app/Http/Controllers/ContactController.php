@@ -46,7 +46,7 @@ class ContactController extends Controller
                     . $validated['message'];
 
                 Mail::raw($body, function ($mail) use ($validated, $subjectLine) {
-                    $mail->to('mahmoudmn3m007@gmail.com')
+                    $mail->to(config('mail.contact_to', 'info@alrashed-safety.com'))
                         ->subject(
                             'New Contact Message from '.$validated['name']
                             .($subjectLine !== '' ? ' — '.$subjectLine : '')
