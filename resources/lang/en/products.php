@@ -35,4 +35,11 @@ return [
     'created_date' => 'Created Date',
     'last_updated' => 'Last Updated',
     'close' => 'Close',
+    'description' => 'Description',
+    'product_code' => 'Product Code',
+    'specifications' => 'Specifications',
+    'back_to_products' => 'Back to Products',
+    'back_to_category' => 'Back to Category',
+    'request_quote' => 'Request a Quote',
+    'product_details' => 'Product Details',
 ];

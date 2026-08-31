@@ -117,9 +117,9 @@
     <div id="app" class="d-flex flex-column min-vh-100">
         <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNavbar">
             <div class="container">
-                <a class="navbar-brand d-flex align-items-center" href="{{ url('/') }}">
+                <a class="navbar-brand d-flex align-items-center gap-2" href="{{ url('/') }}">
                     <img src="{{ asset('images/logo_white.png') }}" alt="{{ config('app.name', 'ALRASHED INSTITUTION') }}"
-                        class="me-2" width="38" height="38" decoding="async">
+                        width="38" height="38" decoding="async">
                     <span class="fw-bold d-none d-sm-inline">{{ config('app.name', 'ALRASHED INSTITUTION') }}</span>
                 </a>
 
@@ -135,7 +135,7 @@
                 </div>
 
                 <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav ms-auto align-items-lg-center">
+                    <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-1">
                         <li class="nav-item">
                             <a class="nav-link {{ request()->is('/') ? 'active' : '' }}"
                                 href="{{ url('/') }}">{{ __('navbar.home') }}</a>
@@ -277,19 +277,19 @@
                     <div class="col-lg-3 col-md-12">
                         <h6 class="fw-bold mb-3">{{ __('footer.contact') }}</h6>
                         <div class="contact-info">
-                            <div class="d-flex align-items-start mb-3">
-                                <i class="fas fa-map-marker-alt me-3 mt-1"></i>
+                            <div class="d-flex align-items-start mb-3 gap-3">
+                                <i class="fas fa-map-marker-alt mt-1 flex-shrink-0"></i>
                                 <span>{{ __('home.address_text') }}</span>
                             </div>
-                            <div class="d-flex align-items-center mb-3">
-                                <i class="fas fa-envelope me-3"></i>
+                            <div class="d-flex align-items-center mb-3 gap-3">
+                                <i class="fas fa-envelope flex-shrink-0"></i>
                                 <a href="mailto:{{ __('contact.email_address') }}">{{ __('contact.email_address') }}</a>
                             </div>
-                            <div class="d-flex align-items-center mb-3">
-                                <i class="fab fa-whatsapp me-3"></i>
+                            <div class="d-flex align-items-center mb-3 gap-3">
+                                <i class="fab fa-whatsapp flex-shrink-0"></i>
                                 <a href="https://wa.me/201000864742" target="_blank" rel="noopener">{{ __('home.phone_number') }}</a>
                             </div>
-                            <a href="{{ url('/contact') }}" class="btn btn-outline-light btn-sm mt-2">
+                            <a href="{{ url('/contact') }}" class="btn btn-outline-light btn-sm mt-2 w-100 w-md-auto">
                                 {{ __('navbar.get_quote') }}
                             </a>
                         </div>

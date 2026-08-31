@@ -8,16 +8,16 @@
                     {{ $paginator->count() }}
                 @endif
             </span>
-            <span class="pagination-total">of {{ $paginator->total() }}</span>
+            <span class="pagination-total">{{ __('pagination.of') }} {{ $paginator->total() }}</span>
         </p>
 
         <div class="pagination-controls" role="list">
             @if ($paginator->onFirstPage())
-                <span class="pagination-btn pagination-btn-nav pagination-btn-disabled" aria-disabled="true" aria-label="Previous">
+                <span class="pagination-btn pagination-btn-nav pagination-btn-disabled" aria-disabled="true" aria-label="{{ __('pagination.previous') }}">
                     <i class="fas fa-chevron-{{ app()->getLocale() === 'ar' ? 'right' : 'left' }}"></i>
                 </span>
             @else
-                <a href="{{ $paginator->previousPageUrl() }}" class="pagination-btn pagination-btn-nav" rel="prev" aria-label="Previous">
+                <a href="{{ $paginator->previousPageUrl() }}" class="pagination-btn pagination-btn-nav" rel="prev" aria-label="{{ __('pagination.previous') }}">
                     <i class="fas fa-chevron-{{ app()->getLocale() === 'ar' ? 'right' : 'left' }}"></i>
                 </a>
             @endif
@@ -39,11 +39,11 @@
             @endforeach
 
             @if ($paginator->hasMorePages())
-                <a href="{{ $paginator->nextPageUrl() }}" class="pagination-btn pagination-btn-nav" rel="next" aria-label="Next">
+                <a href="{{ $paginator->nextPageUrl() }}" class="pagination-btn pagination-btn-nav" rel="next" aria-label="{{ __('pagination.next') }}">
                     <i class="fas fa-chevron-{{ app()->getLocale() === 'ar' ? 'left' : 'right' }}"></i>
                 </a>
             @else
-                <span class="pagination-btn pagination-btn-nav pagination-btn-disabled" aria-disabled="true" aria-label="Next">
+                <span class="pagination-btn pagination-btn-nav pagination-btn-disabled" aria-disabled="true" aria-label="{{ __('pagination.next') }}">
                     <i class="fas fa-chevron-{{ app()->getLocale() === 'ar' ? 'left' : 'right' }}"></i>
                 </span>
             @endif

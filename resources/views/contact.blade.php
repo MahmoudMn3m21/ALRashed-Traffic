@@ -156,32 +156,37 @@
                         <div class="row g-3">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input type="text" name="name" class="form-control form-control-lg"
-                                        placeholder="{{ __('contact.name') }}" required>
+                                    <input type="text" name="name" class="form-control form-control-lg @error('name') is-invalid @enderror"
+                                        placeholder="{{ __('contact.name') }}" value="{{ old('name') }}" required>
+                                    @error('name')<div class="form-error-text">{{ $message }}</div>@enderror
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input type="email" name="email" class="form-control form-control-lg"
-                                        placeholder="{{ __('contact.email') }}" required>
+                                    <input type="email" name="email" class="form-control form-control-lg @error('email') is-invalid @enderror"
+                                        placeholder="{{ __('contact.email') }}" value="{{ old('email') }}" required>
+                                    @error('email')<div class="form-error-text">{{ $message }}</div>@enderror
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input type="tel" name="phone" class="form-control form-control-lg"
-                                        placeholder="{{ __('contact.phone') }}" required>
+                                    <input type="tel" name="phone" class="form-control form-control-lg @error('phone') is-invalid @enderror"
+                                        placeholder="{{ __('contact.phone') }}" value="{{ old('phone') }}" required>
+                                    @error('phone')<div class="form-error-text">{{ $message }}</div>@enderror
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <input type="text" name="subject" class="form-control form-control-lg"
-                                        placeholder="{{ __('contact.subject') }}" required>
+                                    <input type="text" name="subject" class="form-control form-control-lg @error('subject') is-invalid @enderror"
+                                        placeholder="{{ __('contact.subject') }}" value="{{ old('subject') }}" required>
+                                    @error('subject')<div class="form-error-text">{{ $message }}</div>@enderror
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-group">
-                                    <textarea name="message" rows="6" class="form-control form-control-lg"
-                                        placeholder="{{ __('contact.message') }}" required></textarea>
+                                    <textarea name="message" rows="6" class="form-control form-control-lg @error('message') is-invalid @enderror"
+                                        placeholder="{{ __('contact.message') }}" required>{{ old('message') }}</textarea>
+                                    @error('message')<div class="form-error-text">{{ $message }}</div>@enderror
                                 </div>
                             </div>
                             <div class="col-12">

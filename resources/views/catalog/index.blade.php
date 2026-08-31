@@ -13,7 +13,7 @@
                     <h1 class="hero-title mb-4">{{ __('navbar.catalog') }}</h1>
                     <p class="hero-subtitle mb-5">{{ __('catalog.hero_subtitle') }}</p>
                     <a href="#catalog-showcase" class="btn btn-light btn-lg px-5 py-3 rounded-pill smooth-scroll">
-                        View Catalog <i class="fas fa-book ms-2"></i>
+                        {{ __('catalog.view_catalog') }} <i class="fas fa-book ms-2"></i>
                     </a>
                 </div>
             </div>
@@ -44,10 +44,10 @@
         <div class="row g-4">
             @foreach ($items as $item)
             <div class="col-lg-4 col-md-6">
-                <div class="card h-100 border-0 shadow-lg rounded-4 overflow-hidden">
-                    <div class="card-body text-center p-4 d-flex flex-column align-items-center justify-content-center" style="min-height: 200px;">
+                <div class="card h-100 border-0 shadow-lg rounded-4 overflow-hidden catalog-card">
+                    <div class="card-body text-center p-4 d-flex flex-column align-items-center justify-content-center catalog-card-body">
                         <i class="fas fa-file-pdf fa-4x text-danger mb-3"></i>
-                        <h5 class="card-title fw-bold text-dark">{{ $item->getTitle() }}</h5>
+                        <h5 class="card-title fw-bold">{{ $item->getTitle() }}</h5>
                         <a href="{{ asset('storage/catalog/' . $item->file) }}" target="_blank" rel="noopener" class="btn btn-primary mt-3 rounded-pill">
                             <i class="fas fa-download me-2"></i>{{ __('catalog.download') }}
                         </a>

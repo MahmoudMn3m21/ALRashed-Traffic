@@ -4,37 +4,6 @@
 
 @section('content')
 
-    <style>
-        .client-card {
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .client-info {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            text-align: center;
-            padding: 10px 15px 20px;
-        }
-
-        .client-name {
-            min-height: 48px;
-        }
-
-        .client-description {
-            min-height: 50px;
-        }
-
-        .client-info .btn {
-            margin-top: auto;
-        }
-    </style>
-
-
     <!-- Clients Hero Section -->
     <section class="hero-section position-relative overflow-hidden">
         <div class="hero-background"></div>

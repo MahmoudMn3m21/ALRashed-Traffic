@@ -39,4 +39,11 @@ return [
     'created_date' => 'تاريخ الإنشاء',
     'last_updated' => 'آخر تحديث',
     'close' => 'إغلاق',
+    'description' => 'الوصف',
+    'product_code' => 'رمز المنتج',
+    'specifications' => 'المواصفات',
+    'back_to_products' => 'العودة للمنتجات',
+    'back_to_category' => 'العودة للتصنيف',
+    'request_quote' => 'طلب عرض سعر',
+    'product_details' => 'تفاصيل المنتج',
 ];

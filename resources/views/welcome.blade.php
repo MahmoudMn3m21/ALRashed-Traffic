@@ -83,6 +83,10 @@
                             @endif
                         </div>
                     </div>
+                    <a href="{{ route('products.show', $product) }}" class="product-card-footer-link">
+                        {{ __('home.view_details') }}
+                        <i class="fas fa-arrow-{{ app()->getLocale() == 'ar' ? 'left' : 'right' }} icon-dir icon-dir-flip"></i>
+                    </a>
                 </div>
             </div>
             @endforeach
@@ -91,7 +95,7 @@
             <div class="col-12 text-center mt-5" data-aos="fade-up" data-aos-duration="600">
                 <a href="{{ url('/products') }}" class="btn btn-primary btn-lg">
                     {{ __('home.view_all_products') }}
-                    <i class="fas fa-arrow-right ms-2"></i>
+                    <i class="fas fa-arrow-{{ app()->getLocale() == 'ar' ? 'left' : 'right' }} ms-2 icon-dir icon-dir-flip"></i>
                 </a>
             </div>
         </div>
@@ -130,7 +134,7 @@
             <div class="col-12 text-center mt-5">
                 <a href="{{ url('/clients') }}" class="btn btn-primary btn-lg">
                     {{ __('home.view_all_clients') }}
-                    <i class="fas fa-arrow-right ms-2"></i>
+                    <i class="fas fa-arrow-{{ app()->getLocale() == 'ar' ? 'left' : 'right' }} ms-2 icon-dir icon-dir-flip"></i>
                 </a>
             </div>
         </div>
@@ -182,7 +186,7 @@
             <div class="col-12 text-center mt-5">
                 <a href="{{ url('/projects') }}" class="btn btn-primary btn-lg">
                     {{ __('home.view_all_projects') }}
-                    <i class="fas fa-arrow-right ms-2"></i>
+                    <i class="fas fa-arrow-{{ app()->getLocale() == 'ar' ? 'left' : 'right' }} ms-2 icon-dir icon-dir-flip"></i>
                 </a>
             </div>
         </div>
@@ -271,31 +275,36 @@
                         <div class="row g-3">
                             <div class="col-md-6">
                                 <div class="form-floating">
-                                    <input type="text" class="form-control" id="name" name="name" placeholder="{{ __('home.name_label') }}" required>
+                                    <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name"
+                                        placeholder="{{ __('home.name_label') }}" value="{{ old('name') }}" required>
                                     <label for="name">{{ __('home.name_label') }}</label>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-floating">
-                                    <input type="email" class="form-control" id="email" name="email" placeholder="{{ __('home.email_placeholder') }}" required>
+                                    <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email"
+                                        placeholder="{{ __('home.email_placeholder') }}" value="{{ old('email') }}" required>
                                     <label for="email">{{ __('home.email_placeholder') }}</label>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-floating">
-                                    <input type="tel" class="form-control" id="phone" name="phone" placeholder="{{ __('home.phone_label') }}" required>
+                                    <input type="tel" class="form-control @error('phone') is-invalid @enderror" id="phone" name="phone"
+                                        placeholder="{{ __('home.phone_label') }}" value="{{ old('phone') }}" required>
                                     <label for="phone">{{ __('home.phone_label') }}</label>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-floating">
-                                    <input type="text" class="form-control" id="subject" name="subject" placeholder="{{ __('home.subject') }}" required>
+                                    <input type="text" class="form-control @error('subject') is-invalid @enderror" id="subject" name="subject"
+                                        placeholder="{{ __('home.subject') }}" value="{{ old('subject') }}" required>
                                     <label for="subject">{{ __('home.subject') }}</label>
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-floating">
-                                    <textarea class="form-control" id="message" name="message" placeholder="{{ __('home.message_label') }}" style="height: 120px;" required></textarea>
+                                    <textarea class="form-control @error('message') is-invalid @enderror" id="message" name="message"
+                                        placeholder="{{ __('home.message_label') }}" style="height: 120px;" required>{{ old('message') }}</textarea>
                                     <label for="message">{{ __('home.message_label') }}</label>
                                 </div>
                             </div>

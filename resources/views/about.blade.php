@@ -22,8 +22,8 @@
             <div class="col-lg-10 col-xl-8 mx-auto text-center fade-in">
                 <h1 class="hero-title mb-4">{{ __('navbar.about') }}</h1>
                 <p class="hero-subtitle mb-4">{{ __('about.hero_subtitle') }}</p>
-                <div class="hero-buttons">
-                    <a href="#company-intro" class="btn btn-primary btn-lg me-3 smooth-scroll">{{ __('about.learn_more') }}</a>
+                <div class="hero-buttons d-flex flex-wrap gap-3 justify-content-center">
+                    <a href="#company-intro" class="btn btn-primary btn-lg smooth-scroll">{{ __('about.learn_more') }}</a>
                     <a href="{{ url('/contact') }}" class="btn btn-outline-light btn-lg">{{ __('navbar.contact') }}</a>
                 </div>
             </div>

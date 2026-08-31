@@ -12,11 +12,11 @@
             <div class="col-lg-10 col-xl-8 mx-auto text-center text-white">
                 <div class="fade-in">
                     @isset($category)
-                    <nav aria-label="breadcrumb" class="mb-3">
-                        <a href="{{ route('products.index') }}" class="text-white text-decoration-none small">
-                            <i class="fas fa-arrow-{{ app()->getLocale() == 'ar' ? 'right' : 'left' }} me-2"></i>{{ __('categories.back_to_categories') }}
-                        </a>
-                    </nav>
+                    @include('partials.breadcrumb', ['items' => [
+                        ['label' => __('navbar.home'), 'url' => url('/')],
+                        ['label' => __('navbar.products'), 'url' => route('products.index')],
+                        ['label' => $category->getName(), 'url' => '#'],
+                    ]])
                     <h1 class="hero-title mb-4">{{ $category->getName() }}</h1>
                     <p class="hero-subtitle mb-5">{{ __('products.hero_subtitle') }}</p>
                     @else
@@ -130,7 +130,7 @@
                             <div class="product-content p-4">
                                 <h3 class="product-title fw-bold mb-3">{{ $product->getName() }}</h3>
                                 @if ($product->code)
-                                <p class="product-subtitle text-muted mb-3">Code: {{ $product->code }}</p>
+                                <p class="product-subtitle text-muted mb-3">{{ __('products.product_code') }}: {{ $product->code }}</p>
                                 @endif
                                 @if ($product->description)
                                 <p class="product-description mb-0">
@@ -138,6 +138,10 @@
                                 </p>
                                 @endif
                             </div>
+                            <a href="{{ route('products.show', $product) }}" class="product-card-footer-link">
+                                {{ __('products.view_details') }}
+                                <i class="fas fa-arrow-{{ app()->getLocale() == 'ar' ? 'left' : 'right' }} icon-dir icon-dir-flip"></i>
+                            </a>
                         </div>
                     </div>
                     @endforeach

@@ -13,7 +13,7 @@
                     <h1 class="hero-title mb-4">{{ __('navbar.gallery') }}</h1>
                     <p class="hero-subtitle mb-5">{{ __('gallery.hero_subtitle') }}</p>
                     <a href="#gallery-showcase" class="btn btn-light btn-lg px-5 py-3 rounded-pill smooth-scroll">
-                        View Gallery <i class="fas fa-images ms-2"></i>
+                        {{ __('gallery.view_gallery') }} <i class="fas fa-images ms-2"></i>
                     </a>
                 </div>
             </div>
