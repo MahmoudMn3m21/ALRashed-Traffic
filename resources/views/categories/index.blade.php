@@ -89,7 +89,8 @@
                     <div class="product-card rounded-4 shadow-lg h-100 overflow-hidden border-0">
                         <div class="product-image-wrapper category-image-wrapper position-relative">
                             @if ($category->image)
-                            <img src="{{ asset('storage/categories/' . $category->image) }}" alt="{{ $category->getName() }}" class="category-image">
+                            <img src="{{ asset('storage/categories/' . $category->image) }}" alt="{{ $category->getName() }}"
+                                class="category-image" width="400" height="280" loading="lazy" decoding="async">
                             @else
                             <i class="fas fa-folder-open fa-4x text-primary position-absolute top-50 start-50 translate-middle"></i>
                             @endif

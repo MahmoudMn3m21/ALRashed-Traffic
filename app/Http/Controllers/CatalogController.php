@@ -8,7 +8,12 @@ class CatalogController extends Controller
 {
     public function index()
     {
-        $items = CatalogItem::orderBy('sort_order')->orderBy('id')->get();
+        $items = CatalogItem::query()
+            ->select(['id', 'title_en', 'title_ar', 'file', 'sort_order'])
+            ->orderBy('sort_order')
+            ->orderBy('id')
+            ->get();
+
         return view('catalog.index', compact('items'));
     }
 }

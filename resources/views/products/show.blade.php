@@ -24,7 +24,8 @@
             <!-- Product Image -->
             <div class="col-lg-6 mb-4">
                 @if($product->image)
-                <img src="{{ asset('storage/' . $product->image) }}" class="img-fluid rounded shadow" alt="{{ $product->getName() }}">
+                <img src="{{ asset('storage/' . $product->image) }}" class="img-fluid rounded shadow"
+                    alt="{{ $product->getName() }}" width="600" height="600" fetchpriority="high" decoding="async">
                 @else
                 <div class="bg-light d-flex align-items-center justify-content-center rounded shadow" style="height: 400px;">
                     <i class="fas fa-image fa-5x text-muted"></i>

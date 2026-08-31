@@ -15,5 +15,15 @@ export default defineConfig({
         // Laravel looks for public/build/manifest.json (not .vite/manifest.json)
         manifest: 'manifest.json',
         emptyOutDir: true,
+        cssMinify: true,
+        rollupOptions: {
+            output: {
+                manualChunks(id) {
+                    if (id.includes('node_modules/bootstrap')) {
+                        return 'bootstrap';
+                    }
+                },
+            },
+        },
     },
 });

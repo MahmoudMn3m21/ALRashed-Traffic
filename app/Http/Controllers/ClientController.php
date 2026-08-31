@@ -12,7 +12,11 @@ class ClientController extends Controller
      */
     public function index()
     {
-        $clients = Client::paginate(12);
+        $clients = Client::query()
+            ->select(['id', 'name', 'logo', 'website'])
+            ->orderBy('id')
+            ->paginate(12);
+
         return view('clients', compact('clients'));
     }
 }

@@ -60,10 +60,12 @@
                     <div class="project-image-wrapper">
                         @if ($project->image)
                         <img src="{{ asset('storage/projects/' . $project->image) }}"
-                            alt="{{ $project->getTitle() }}" class="project-image">
+                            alt="{{ $project->getTitle() }}" class="project-image"
+                            width="400" height="250" loading="lazy" decoding="async">
                         @else
                         <img src="{{ asset('images/placeholder.jpg') }}"
-                            alt="{{ $project->getTitle() }}" class="project-image">
+                            alt="{{ $project->getTitle() }}" class="project-image"
+                            width="400" height="250" loading="lazy" decoding="async">
                         @endif
                         <div class="project-overlay">
                             <div class="project-overlay-content">
@@ -72,9 +74,13 @@
                                 <p class="project-overlay-subtitle">{{ $project->getAlternateTitle() }}</p>
                                 @endif
                                 <div class="overlay-actions">
-                                    <button class="btn btn-light btn-sm rounded-pill me-2"
+                                    <button type="button" class="btn btn-light btn-sm rounded-pill me-2 project-detail-trigger"
                                         data-bs-toggle="modal"
-                                        data-bs-target="#projectModal{{ $project->id }}">
+                                        data-bs-target="#projectDetailModal"
+                                        data-title="{{ $project->getTitle() }}"
+                                        data-subtitle="{{ $project->getAlternateTitle() }}"
+                                        data-description="{{ $project->getDescription() }}"
+                                        data-image="{{ $project->image ? asset('storage/projects/' . $project->image) : '' }}">
                                         <i class="fas fa-eye me-1"></i>
                                         {{ __('projects.view_details') }}
                                     </button>
@@ -95,38 +101,31 @@
                     </div>
                 </div>
             </div>
+            @endforeach
+        </div>
 
-            <!-- Project Modal -->
-            <div class="modal fade" id="projectModal{{ $project->id }}" tabindex="-1">
-                <div class="modal-dialog modal-lg modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header border-0">
-                            <h5 class="modal-title">{{ $project->getTitle() }}</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        <!-- Shared project detail modal (avoids duplicating images in DOM) -->
+        <div class="modal fade" id="projectDetailModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header border-0">
+                        <h5 class="modal-title" id="projectDetailModalTitle"></h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body p-0">
+                        <img id="projectDetailModalImage" src="" alt="" class="img-fluid w-100 mb-3 d-none">
+                        <div class="p-4">
+                            <p class="text-muted mb-3 d-none" id="projectDetailModalSubtitle"></p>
+                            <p class="mb-3 d-none" id="projectDetailModalDescription"></p>
                         </div>
-                        <div class="modal-body p-0">
-                            @if ($project->image)
-                            <img src="{{ asset('storage/projects/' . $project->image) }}"
-                                alt="{{ $project->getTitle() }}" class="img-fluid w-100 mb-3">
-                            @endif
-                            <div class="p-4">
-                                @if ($project->getAlternateTitle())
-                                <p class="text-muted mb-3">{{ $project->getAlternateTitle() }}</p>
-                                @endif
-                                @if ($project->getDescription())
-                                <p class="mb-3">{{ $project->getDescription() }}</p>
-                                @endif
-                            </div>
-                        </div>
-                        <div class="modal-footer border-0">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                                {{ __('projects.close') }}
-                            </button>
-                        </div>
+                    </div>
+                    <div class="modal-footer border-0">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+                            {{ __('projects.close') }}
+                        </button>
                     </div>
                 </div>
             </div>
-            @endforeach
         </div>
 
         <!-- Pagination -->
@@ -176,3 +175,54 @@
 
 
 @endsection
+
+@push('scripts')
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    var modal = document.getElementById('projectDetailModal');
+    if (!modal) {
+        return;
+    }
+
+    modal.addEventListener('show.bs.modal', function (event) {
+        var trigger = event.relatedTarget;
+        if (!trigger) {
+            return;
+        }
+
+        var titleEl = document.getElementById('projectDetailModalTitle');
+        var imageEl = document.getElementById('projectDetailModalImage');
+        var subtitleEl = document.getElementById('projectDetailModalSubtitle');
+        var descriptionEl = document.getElementById('projectDetailModalDescription');
+
+        if (titleEl) {
+            titleEl.textContent = trigger.dataset.title || '';
+        }
+
+        if (imageEl) {
+            var imageUrl = trigger.dataset.image || '';
+            if (imageUrl) {
+                imageEl.src = imageUrl;
+                imageEl.alt = trigger.dataset.title || '';
+                imageEl.classList.remove('d-none');
+            } else {
+                imageEl.removeAttribute('src');
+                imageEl.classList.add('d-none');
+            }
+        }
+
+        if (subtitleEl) {
+            var subtitle = trigger.dataset.subtitle || '';
+            subtitleEl.textContent = subtitle;
+            subtitleEl.classList.toggle('d-none', subtitle === '');
+        }
+
+        if (descriptionEl) {
+            var description = trigger.dataset.description || '';
+            descriptionEl.textContent = description;
+            descriptionEl.classList.toggle('d-none', description === '');
+        }
+    });
+});
+</script>
+@endpush

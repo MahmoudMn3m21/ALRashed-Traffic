@@ -32,7 +32,7 @@
             <div class="col-lg-5 text-center mt-5 mt-lg-0" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="300">
                 <div class="hero-image-wrapper">
                     <img src="{{ asset('images/logo_white.png') }}" alt="ALRASHED INSTITUTION"
-                        class="img-fluid hero-image">
+                        class="img-fluid hero-image" width="320" height="320" fetchpriority="high" decoding="async">
                 </div>
             </div>
         </div>
@@ -63,7 +63,8 @@
                 <div class="product-card h-100 text-center" data-aos="fade-up" data-aos-duration="600" data-aos-delay="{{ $index * 100 }}">
                     <div class="product-image-wrapper">
                         <img src="{{ $product->image ? asset('storage/' . $product->image) : asset('images/placeholder.jpg') }}"
-                            class="product-image" alt="{{ $product->getName() }}">
+                            class="product-image" alt="{{ $product->getName() }}"
+                            width="400" height="250" loading="lazy" decoding="async">
                         <div class="product-overlay text-center">
                             <a href="{{ route('products.show', $product) }}" class="btn btn-light btn-sm">
                                 <i class="fas fa-eye me-2"></i>{{ __('home.view_details') }}
@@ -115,7 +116,8 @@
                 <div class="client-card fade-in" style="animation-delay: {{ $index * 0.05 }}s;">
                     <div class="client-logo-wrapper">
                         <img src="{{ $client->logo ? asset('storage/clients/' . $client->logo) : asset('images/placeholder.jpg') }}"
-                            class="client-logo" alt="{{ $client->name }}">
+                            class="client-logo" alt="{{ $client->name }}"
+                            width="160" height="140" loading="lazy" decoding="async">
                     </div>
                     <div class="client-info">
                         <h6 class="client-name">{{ $client->name }}</h6>
@@ -153,7 +155,8 @@
                 <div class="project-card fade-in" style="animation-delay: {{ $index * 0.1 }}s;">
                     <div class="project-image-wrapper">
                         <img src="{{ $project->image ? asset('storage/projects/' . $project->image) : asset('images/placeholder.jpg') }}"
-                            class="project-image" alt="{{ $project->getTitle() }}">
+                            class="project-image" alt="{{ $project->getTitle() }}"
+                            width="400" height="250" loading="lazy" decoding="async">
                         <div class="project-overlay">
                             <div class="project-overlay-content">
                                 <h5 class="project-overlay-title">{{ $project->getTitle() }}</h5>
@@ -312,7 +315,7 @@
                     <h4 class="mb-4">{{ __('home.location_title') }}</h4>
 
                     <iframe
-                        src="https://www.google.com/maps?q=10%20El%20Gahez%20Street,%20Nasr%20City,%20Cairo,%20Egypt&output=embed"
+                        data-src="https://www.google.com/maps?q=10%20El%20Gahez%20Street,%20Nasr%20City,%20Cairo,%20Egypt&output=embed"
                         width="100%"
                         height="400"
                         style="border:0;"
@@ -328,3 +331,37 @@
     </div>
 </section>
 @endsection
+
+@push('styles')
+<link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" media="print" onload="this.media='all'">
+@endpush
+
+@push('scripts')
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    var mapFrame = document.querySelector('.google-map[data-src]');
+    if (!mapFrame || !('IntersectionObserver' in window)) {
+        if (mapFrame && mapFrame.dataset.src) {
+            mapFrame.src = mapFrame.dataset.src;
+        }
+        return;
+    }
+
+    var mapObserver = new IntersectionObserver(function (entries, observer) {
+        entries.forEach(function (entry) {
+            if (!entry.isIntersecting) {
+                return;
+            }
+
+            var frame = entry.target;
+            frame.src = frame.dataset.src;
+            frame.removeAttribute('data-src');
+            observer.unobserve(frame);
+        });
+    }, { rootMargin: '200px' });
+
+    mapObserver.observe(mapFrame);
+});
+</script>
+@endpush

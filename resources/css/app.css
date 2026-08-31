@@ -1453,6 +1453,10 @@ footer .row:last-child p {
 
 /* Responsive */
 @media (max-width: 768px) {
+    body {
+        background-attachment: scroll;
+    }
+
     .section-padding {
         padding: 3.5rem 0;
     }

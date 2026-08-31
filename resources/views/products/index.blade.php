@@ -114,10 +114,12 @@
                             <div class="product-image-wrapper">
                                 @if ($product->image)
                                 <img src="{{ asset('storage/' . $product->image) }}"
-                                    alt="{{ $product->getName() }}" class="product-image">
+                                    alt="{{ $product->getName() }}" class="product-image"
+                                    width="400" height="250" loading="lazy" decoding="async">
                                 @else
                                 <img src="{{ asset('images/placeholder.jpg') }}"
-                                    alt="{{ $product->getName() }}" class="product-image">
+                                    alt="{{ $product->getName() }}" class="product-image"
+                                    width="400" height="250" loading="lazy" decoding="async">
                                 @endif
                                 <div class="product-overlay">
                                     <a href="{{ route('products.show', $product) }}" class="btn btn-light btn-sm">
@@ -135,71 +137,6 @@
                                     {{ Str::limit($product->description, 150) }}
                                 </p>
                                 @endif
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Product Modal -->
-                    <div class="modal fade" id="productModal{{ $product->id }}" tabindex="-1">
-                        <div class="modal-dialog modal-lg modal-dialog-centered">
-                            <div class="modal-content">
-                                <div class="modal-header border-0">
-                                    <h5 class="modal-title">{{ $product->getName() }}</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                                </div>
-                                <div class="modal-body p-0">
-                                    @if ($product->image)
-                                    <img src="{{ asset('storage/' . $product->image) }}"
-                                        alt="{{ $product->getName() }}" class="img-fluid w-100 mb-3">
-                                    @endif
-                                    <div class="p-4">
-                                        @if ($product->code)
-                                        <p class="text-muted mb-3">Code: {{ $product->code }}</p>
-                                        @endif
-                                        @if ($product->description)
-                                        <p class="mb-3">{{ $product->description }}</p>
-                                        @endif
-                                        <div class="row g-3">
-                                            @if ($product->material)
-                                            <div class="col-md-6">
-                                                <strong>{{ __('products.material') }}:</strong><br>
-                                                <span class="text-muted">{{ $product->material }}</span>
-                                            </div>
-                                            @endif
-                                            @if ($product->color)
-                                            <div class="col-md-6">
-                                                <strong>{{ __('products.color') }}:</strong><br>
-                                                <span class="text-muted">{{ $product->color }}</span>
-                                            </div>
-                                            @endif
-                                            @if ($product->features)
-                                            <div class="col-12">
-                                                <strong>{{ __('products.features') }}:</strong><br>
-                                                <span class="text-muted">{{ $product->features }}</span>
-                                            </div>
-                                            @endif
-                                            @if ($product->usages)
-                                            <div class="col-12">
-                                                <strong>{{ __('products.usages') }}:</strong><br>
-                                                <span class="text-muted">{{ $product->usages }}</span>
-                                            </div>
-                                            @endif
-                                            <div class="col-md-6">
-                                                <strong>{{ __('products.created_date') }}:</strong><br>
-                                                <span class="text-muted">{{ $product->created_at->format('F Y') }}</span>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <strong>{{ __('products.last_updated') }}:</strong><br>
-                                                <span class="text-muted">{{ $product->updated_at->format('F Y') }}</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="modal-footer border-0">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-                                        {{ __('products.close') }}
-                                    </button>
-                                </div>
                             </div>
                         </div>
                     </div>

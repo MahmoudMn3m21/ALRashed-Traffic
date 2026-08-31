@@ -8,7 +8,12 @@ class GalleryController extends Controller
 {
     public function index()
     {
-        $items = GalleryItem::orderBy('sort_order')->orderBy('id')->get();
+        $items = GalleryItem::query()
+            ->select(['id', 'title_en', 'title_ar', 'image', 'sort_order'])
+            ->orderBy('sort_order')
+            ->orderBy('id')
+            ->paginate(24);
+
         return view('gallery.index', compact('items'));
     }
 }

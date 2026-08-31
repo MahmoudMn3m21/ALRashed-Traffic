@@ -46,7 +46,8 @@
             <div class="col-lg-3 col-md-4 col-sm-6">
                 <a href="{{ asset('storage/gallery/' . $item->image) }}" class="gallery-item" data-title="{{ $item->getTitle() }}" data-gallery="gallery">
                     <div class="ratio ratio-1x1 rounded-4 overflow-hidden shadow-sm bg-light">
-                        <img src="{{ asset('storage/gallery/' . $item->image) }}" alt="{{ $item->getTitle() }}" class="object-fit-cover w-100 h-100">
+                        <img src="{{ asset('storage/gallery/' . $item->image) }}" alt="{{ $item->getTitle() }}"
+                            class="object-fit-cover w-100 h-100" width="300" height="300" loading="lazy" decoding="async">
                     </div>
                     @if ($item->getTitle())
                     <p class="small text-muted mt-2 mb-0 text-center">{{ $item->getTitle() }}</p>
@@ -55,6 +56,14 @@
             </div>
             @endforeach
         </div>
+
+        @if ($items->hasPages())
+        <div class="pagination-section mt-5">
+            <div class="pagination-wrapper">
+                {{ $items->links('pagination.custom') }}
+            </div>
+        </div>
+        @endif
         @else
         <div class="text-center py-5">
             <i class="fas fa-images fa-4x text-muted mb-4"></i>

@@ -95,7 +95,7 @@
                                     @if ($client->logo)
 
                                         <img src="{{ asset('storage/clients/' . $client->logo) }}" alt="{{ $client->name }}"
-                                            class="client-logo">
+                                            class="client-logo" width="160" height="140" loading="lazy" decoding="async">
 
                                     @else
 

@@ -106,10 +106,9 @@
     <noscript>
         <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     </noscript>
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" media="print" onload="this.media='all'">
+    @stack('styles')
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-    @stack('styles')
 </head>
 
 <body class="theme-dark">
@@ -310,7 +309,6 @@
         </footer>
     </div>
 
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
     @stack('scripts')
     @if (session('success') || (isset($errors) && $errors->any()))
     <script>

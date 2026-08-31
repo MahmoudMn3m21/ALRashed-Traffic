@@ -1,5 +1,24 @@
 // Interactive Enhancements for Al Rashed Traffic Website
 
+const scrollCallbacks = [];
+let scrollTicking = false;
+
+function onScrollFrame() {
+    scrollCallbacks.forEach((callback) => callback());
+    scrollTicking = false;
+}
+
+function registerScrollCallback(callback) {
+    scrollCallbacks.push(callback);
+}
+
+window.addEventListener('scroll', () => {
+    if (!scrollTicking) {
+        scrollTicking = true;
+        requestAnimationFrame(onScrollFrame);
+    }
+}, { passive: true });
+
 // Smooth Scroll for in-page anchors only (never break Bootstrap dropdowns)
 function initSmoothScroll() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -188,7 +207,7 @@ function initScrollToTop() {
 
     document.body.appendChild(scrollBtn);
 
-    window.addEventListener('scroll', () => {
+    registerScrollCallback(() => {
         if (window.pageYOffset > 300) {
             scrollBtn.style.opacity = '1';
             scrollBtn.style.visibility = 'visible';
@@ -203,7 +222,7 @@ function initScrollToTop() {
 function initNavbarScrollEffect() {
     const navbar = document.querySelector('.navbar');
     if (navbar) {
-        window.addEventListener('scroll', () => {
+        registerScrollCallback(() => {
             if (window.pageYOffset > 100) {
                 navbar.classList.add('navbar-scrolled');
             } else {
@@ -217,7 +236,7 @@ function initNavbarScrollEffect() {
 function initParallaxEffect() {
     const parallaxElements = document.querySelectorAll('.hero-background, .parallax-bg');
     if (parallaxElements.length > 0) {
-        window.addEventListener('scroll', () => {
+        registerScrollCallback(() => {
             const scrolled = window.pageYOffset;
             const rate = scrolled * -0.5;
             parallaxElements.forEach(element => {
@@ -282,10 +301,10 @@ function initProgressScrollIndicator() {
     progressBar.id = 'scroll-progress-bar';
     document.body.appendChild(progressBar);
 
-    window.addEventListener('scroll', () => {
+    registerScrollCallback(() => {
         const scrollTop = window.pageYOffset;
         const docHeight = document.body.scrollHeight - window.innerHeight;
-        const scrollPercent = (scrollTop / docHeight) * 100;
+        const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
         progressBar.style.width = scrollPercent + '%';
     });
 }
@@ -308,12 +327,11 @@ function initStickyContactButton() {
 function initCTAHighlight() {
     const ctaButtons = document.querySelectorAll('.btn-primary, .btn-light[href*="contact"], a[href*="contact"].btn');
 
-    window.addEventListener('scroll', () => {
+    registerScrollCallback(() => {
         const scrollTop = window.pageYOffset;
         const docHeight = document.body.scrollHeight - window.innerHeight;
-        const scrollPercent = (scrollTop / docHeight) * 100;
+        const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
 
-        // Highlight CTA when user scrolls past 70% of the page
         if (scrollPercent > 70) {
             ctaButtons.forEach(btn => {
                 btn.classList.add('cta-highlight');
@@ -329,9 +347,12 @@ function initCTAHighlight() {
 // Lazy-load content images (skip logos / already marked)
 function initLazyImages() {
     document.querySelectorAll('img:not([loading])').forEach((img) => {
-        const isCritical = img.closest('.navbar-brand, .hero-image-wrapper, .skip-link');
+        const isCritical = img.closest('.navbar-brand, .hero-image-wrapper')
+            || img.getAttribute('fetchpriority') === 'high';
         if (isCritical) {
-            img.setAttribute('decoding', 'async');
+            if (!img.hasAttribute('decoding')) {
+                img.setAttribute('decoding', 'async');
+            }
             return;
         }
         img.setAttribute('loading', 'lazy');
