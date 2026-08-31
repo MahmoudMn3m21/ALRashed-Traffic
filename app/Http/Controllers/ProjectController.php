@@ -12,7 +12,7 @@ class ProjectController extends Controller
         $projects = Project::query()
             ->select(['id', 'title_en', 'title_ar', 'description_en', 'description_ar', 'image'])
             ->orderBy('id')
-            ->paginate(10);
+            ->paginate(12);
 
         return view('projects.index', compact('projects'));
     }
