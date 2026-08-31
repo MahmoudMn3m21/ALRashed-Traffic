@@ -99,6 +99,16 @@
                         </p>
                         @endif
                     </div>
+                    <button type="button" class="product-card-footer-link project-detail-trigger"
+                        data-bs-toggle="modal"
+                        data-bs-target="#projectDetailModal"
+                        data-title="{{ $project->getTitle() }}"
+                        data-subtitle="{{ $project->getAlternateTitle() }}"
+                        data-description="{{ $project->getDescription() }}"
+                        data-image="{{ $project->image ? asset('storage/projects/' . $project->image) : '' }}">
+                        {{ __('projects.view_details') }}
+                        <i class="fas fa-arrow-{{ app()->getLocale() == 'ar' ? 'left' : 'right' }} icon-dir icon-dir-flip"></i>
+                    </button>
                 </div>
             </div>
             @endforeach

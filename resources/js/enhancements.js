@@ -344,6 +344,32 @@ function initCTAHighlight() {
     });
 }
 
+// Mobile/tablet: tap a card to reveal its overlay (one at a time)
+function initMobileCardTap() {
+    const cards = document.querySelectorAll('.product-card, .project-card');
+    if (!cards.length) return;
+
+    const isTapReveal = () =>
+        window.matchMedia('(hover: none), (pointer: coarse), (max-width: 991.98px)').matches;
+
+    cards.forEach((card) => {
+        card.addEventListener('click', (event) => {
+            if (!isTapReveal()) return;
+            if (event.target.closest('a[href], button')) return;
+
+            cards.forEach((c) => c.classList.remove('card-touched'));
+            card.classList.add('card-touched');
+        });
+    });
+
+    document.addEventListener('click', (event) => {
+        if (!isTapReveal()) return;
+        if (!event.target.closest('.product-card, .project-card')) {
+            cards.forEach((c) => c.classList.remove('card-touched'));
+        }
+    });
+}
+
 // Lazy-load content images (skip logos / already marked)
 function initLazyImages() {
     document.querySelectorAll('img:not([loading])').forEach((img) => {
@@ -387,6 +413,7 @@ function initializeEnhancements() {
     initTooltips();
     initLazyLoading();
     initLazyImages();
+    initMobileCardTap();
     initScrollToTop();
     initNavbarScrollEffect();
     initFormEnhancements();
