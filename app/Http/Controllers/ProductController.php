@@ -46,6 +46,24 @@ class ProductController extends Controller
 
     public function show(Product $product)
     {
-        return view('products.show', compact('product'));
+        $product->load(['category', 'subcategory']);
+
+        $relatedProducts = collect();
+
+        if ($product->category_id) {
+            $relatedProducts = Product::query()
+                ->select([
+                    'id', 'category_id', 'subcategory_id', 'name_en', 'name_ar',
+                    'image', 'description', 'code', 'sort_order',
+                ])
+                ->where('category_id', $product->category_id)
+                ->where('id', '!=', $product->id)
+                ->orderBy('sort_order')
+                ->orderBy('id')
+                ->limit(4)
+                ->get();
+        }
+
+        return view('products.show', compact('product', 'relatedProducts'));
     }
 }

@@ -1,5 +1,5 @@
 @if (!empty($items) && count($items) > 0)
-<nav class="page-breadcrumb" aria-label="{{ __('Breadcrumb') }}">
+<nav class="page-breadcrumb" aria-label="{{ __('products.breadcrumb') }}">
     <ol class="breadcrumb mb-0">
         @foreach ($items as $item)
             @if ($loop->last)

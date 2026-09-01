@@ -7,6 +7,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Al Rashed Institution') }} - @yield('title', 'Home')</title>
+    @stack('head')
     <link rel="icon" type="image/png" href="{{ asset('images/logo_white.png') }}">
 
     {{-- Prevent white unstyled flash before Vite CSS arrives --}}
